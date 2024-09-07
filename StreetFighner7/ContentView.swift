@@ -1,14 +1,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var path = NavigationPath() // ナビゲーション履歴を保持
+    @State private var isFromResult = false
+
     var body: some View {
-        NavigationStack {
-            TitleView() // 最初に表示されるのはタイトル画面
+        NavigationStack(path: $path) {
+            TitleView(path: $path, isFromResult: $isFromResult) // TitleViewにパスを渡す
         }
     }
 }
 
 #Preview {
     ContentView()
-        .previewInterfaceOrientation(.landscapeLeft)  // 横向きに設定
 }

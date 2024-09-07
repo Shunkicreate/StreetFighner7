@@ -41,11 +41,12 @@ struct DefenseView: View {
                         Button("Right") {
                             gameModel.state = .right
                         }
-                        NavigationLink("Go to Result", destination: ResultView())
+                        NavigationLink("Go to Result", destination: ResultView(path: $path, isFromResult: $isFromResult))
                     }
                     .padding()
                 }
                 .padding()
+                .navigationBarBackButtonHidden(true)
             }
         }
     }
