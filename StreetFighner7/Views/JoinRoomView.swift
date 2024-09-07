@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct JoinRoomView: View {
+    @ObservedObject var rotateScreenModel: RotateScreenModel
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
     
@@ -37,7 +38,7 @@ struct JoinRoomView: View {
                     
                     Spacer()
 
-                    NavigationLink(destination: DefenseView(path: $path, isFromResult: $isFromResult)) {
+                    NavigationLink(destination: DefenseView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult)) {
                         Text("たたかう")
                             .font(Font.custom("Mimi_font-Regular", size: 24))
                             .padding()
@@ -75,5 +76,5 @@ struct JoinRoomView: View {
 #Preview {
     @State var path = NavigationPath()
     @State var isFromResult = false
-    return JoinRoomView(path: $path, isFromResult: $isFromResult)
+    return JoinRoomView(rotateScreenModel: .init(), path: $path, isFromResult: $isFromResult)
 }
