@@ -89,7 +89,7 @@ struct AttackView: View {
             if fabs(deviceMotionData?.attitude.pitch ?? 90) < 87 {
                 var yaw = (deviceMotionData?.attitude.yaw ?? 90) * 180 / Double.pi
                 let _ = print(yaw)
-                 yaw -= 20
+                 yaw -= 10
                      
                 //    if yaw <= -90 {
                 //      yaw += 180
