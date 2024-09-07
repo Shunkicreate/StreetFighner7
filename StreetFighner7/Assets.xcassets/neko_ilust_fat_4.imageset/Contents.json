@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "neko_ilust_fat_4.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
