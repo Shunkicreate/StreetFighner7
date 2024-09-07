@@ -1,6 +1,9 @@
 import SwiftUI
 
-struct TitleView: View {
+struct TitleView: View { 
+    @Binding var path: NavigationPath
+    @Binding var isFromResult: Bool
+    
     var body: some View {
         ZStack {
             // 背景画像を追加
@@ -13,10 +16,12 @@ struct TitleView: View {
             VStack {
                 Text("Title Screen")
                     .font(.largeTitle)
-                NavigationLink("Create Room", destination: CreateRoomView())
-                NavigationLink("Join Room", destination: JoinRoomView())
+                NavigationLink("Create Room", destination: CreateRoomView(path: $path, isFromResult: $isFromResult))
+                NavigationLink("Join Room", destination: JoinRoomView(path: $path, isFromResult: $isFromResult))
             }
             .padding()
+            .navigationBarBackButtonHidden(true)
+            
         }
     }
 }
