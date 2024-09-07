@@ -16,8 +16,6 @@
 		9EEFCA352C8C49FD00CDE604 /* Mimi_font-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */; };
 		9EEFCA382C8C7CC600CDE604 /* UIViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA372C8C7CC600CDE604 /* UIViewControllerWrapper.swift */; };
 		9EEFCA3A2C8C7CE300CDE604 /* PortraitHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA392C8C7CE300CDE604 /* PortraitHostingController.swift */; };
-		9EEFCA3C2C8C7FE000CDE604 /* RotateScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA3B2C8C7FE000CDE604 /* RotateScreenModel.swift */; };
-		9EEFCA3C2C8C7FE000CDE604 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA3B2C8C7FE000CDE604 /* ContentViewModel.swift */; };
 		9EEFCA3E2C8C86BA00CDE604 /* PunchTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA3D2C8C86BA00CDE604 /* PunchTestView.swift */; };
 		AB466FC22C8C2DDA00CA5B06 /* StreetFighner7App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FC12C8C2DDA00CA5B06 /* StreetFighner7App.swift */; };
 		AB466FC42C8C2DDA00CA5B06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FC32C8C2DDA00CA5B06 /* ContentView.swift */; };
@@ -44,8 +42,6 @@
 		9EEFCA362C8C4A8600CDE604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9EEFCA372C8C7CC600CDE604 /* UIViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerWrapper.swift; sourceTree = "<group>"; };
 		9EEFCA392C8C7CE300CDE604 /* PortraitHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitHostingController.swift; sourceTree = "<group>"; };
-		9EEFCA3B2C8C7FE000CDE604 /* RotateScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateScreenModel.swift; sourceTree = "<group>"; };
-		9EEFCA3B2C8C7FE000CDE604 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		9EEFCA3D2C8C86BA00CDE604 /* PunchTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunchTestView.swift; sourceTree = "<group>"; };
 		AB466FBE2C8C2DDA00CA5B06 /* StreetFighner7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreetFighner7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB466FC12C8C2DDA00CA5B06 /* StreetFighner7App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetFighner7App.swift; sourceTree = "<group>"; };
@@ -88,7 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				0FAD42052C8C453B00C76A9C /* NekonoteState.swift */,
-				9EEFCA3B2C8C7FE000CDE604 /* RotateScreenModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -244,7 +239,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FAD42062C8C453B00C76A9C /* NekonoteState.swift in Sources */,
-				9EEFCA3C2C8C7FE000CDE604 /* RotateScreenModel.swift in Sources */,
 				AB466FD02C8C34DC00CA5B06 /* AppDelegate.swift in Sources */,
 				9EEFCA3E2C8C86BA00CDE604 /* PunchTestView.swift in Sources */,
 				AB466FFF2C8C3B0500CA5B06 /* DefenseView.swift in Sources */,
@@ -406,7 +400,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shunki.StreetFighner71;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shunki.StreetFighner72;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -436,7 +430,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shunki.StreetFighner71;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shunki.StreetFighner72;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

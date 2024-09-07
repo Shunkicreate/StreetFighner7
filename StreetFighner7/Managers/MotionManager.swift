@@ -4,8 +4,11 @@ import CoreMotion
 final class MotionManager: ObservableObject {
     /// 加速度センサーデータ
     @Published var accelerometerData: CMAccelerometerData?
+    /// Deviceポーズデータ
+    @Published var deviceMotionData: CMDeviceMotion?
     /// ジャイロセンサーデータ
     @Published var gyroData: CMGyroData?
+    
     /// 前回取得したZを、今回取得したZと比較して、
     /// 正であれば、上 → 下。
     /// 負であれば、下 → 上。
@@ -31,6 +34,24 @@ final class MotionManager: ObservableObject {
                 return
             }
             self.accelerometerData = data
+            
+            print("x: \(self.accelerometerData?.acceleration.x), y: \(self.accelerometerData?.acceleration.y), z: \(self.accelerometerData?.acceleration.z)")
+            
+            // MARK: 猫パンチ判定
+            // 調整可能な閾値。デバイスを振ったと見なす加速度の値。
+            let yThreshold: Double = 1.5
+            let zThreshold: Double = 3.5
+
+            if
+                (fabs(data.acceleration.y) > yThreshold || fabs(data.acceleration.z) > zThreshold),
+                let previousZ = self.previousZ,
+                previousZ > 0 {
+                self.direction = CatHandDirection.calcDirection(roll: data.acceleration.x)
+                print(self.direction?.rawValue)
+            } else {
+                self.direction = nil
+            }
+            self.previousZ = data.acceleration.z
         }
     }
 
@@ -39,5 +60,28 @@ final class MotionManager: ObservableObject {
         if motionManager.isAccelerometerAvailable {
             motionManager.stopAccelerometerUpdates()
         }
+    }
+
+    func startDeviceMotion(interval: CGFloat) {
+        guard motionManager.isDeviceMotionAvailable else {
+                    errorMessage = "ポーズセンサーが利用できません。"
+                    return
+                }
+                
+                motionManager.deviceMotionUpdateInterval = interval
+                motionManager.startDeviceMotionUpdates(to: .main) { [weak self] data, error in
+                    guard let self, let data else {
+                        self?.errorMessage = "ポーズセンサーデータが取得できませんでした。"
+                        return
+                    }
+                    self.deviceMotionData = data
+                }
+    }
+
+    func stopDeviceMotion() {
+        guard motionManager.isDeviceMotionAvailable else {
+            fatalError("ポーズセンサーが搭載されていません")
+        }
+        motionManager.stopDeviceMotionUpdates()
     }
 }
