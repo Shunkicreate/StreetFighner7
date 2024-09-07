@@ -14,12 +14,7 @@ struct ResultView: View {
     // neko_fat_levelを計算するコンピューテッドプロパティ
     var neko_fat_level: Int {
         let totalSuccess = resultScore.totalSuccess
-        // totalSuccessがNaNの場合、デフォルトのレベルを返す
-        if totalSuccess <= neko_fat_standard_score {
-            return max(1, min(5, (totalSuccess * neko_fat_standard_level) / neko_fat_standard_score))
-        } else {
-            return 5
-        }
+        return max(1, min(5, Int(totalSuccess / neko_fat_standard_level) / neko_fat_standard_score))
     }
     // neko_fat_imageの名前
     var neko_fat_image: String {
