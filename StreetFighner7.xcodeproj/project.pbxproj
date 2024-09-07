@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F1C5D0B2C8C873F001B78CE /* attack_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0F1C5D0A2C8C873F001B78CE /* attack_1.mp3 */; };
+		0F1C5D0D2C8C8B2A001B78CE /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C5D0C2C8C8B2A001B78CE /* SoundManager.swift */; };
+		0F1C5D0F2C8C8C47001B78CE /* attack_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0F1C5D0E2C8C8C47001B78CE /* attack_2.mp3 */; };
+		0F1C5D112C8C8C8B001B78CE /* attack_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0F1C5D102C8C8C8B001B78CE /* attack_3.mp3 */; };
+		0F1C5D132C8C8CCF001B78CE /* neko_start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0F1C5D122C8C8CCF001B78CE /* neko_start.mp3 */; };
 		0FAD42062C8C453B00C76A9C /* NekonoteState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAD42052C8C453B00C76A9C /* NekonoteState.swift */; };
 		9EEFCA352C8C49FD00CDE604 /* Mimi_font-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */; };
 		9EEFCA382C8C7CC600CDE604 /* UIViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA372C8C7CC600CDE604 /* UIViewControllerWrapper.swift */; };
@@ -26,6 +31,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F1C5D0A2C8C873F001B78CE /* attack_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = attack_1.mp3; path = ../../../../../Downloads/attack_1.mp3; sourceTree = "<group>"; };
+		0F1C5D0C2C8C8B2A001B78CE /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		0F1C5D0E2C8C8C47001B78CE /* attack_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = attack_2.mp3; path = ../../../../../Downloads/attack_2.mp3; sourceTree = "<group>"; };
+		0F1C5D102C8C8C8B001B78CE /* attack_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = attack_3.mp3; path = ../../../../../Downloads/attack_3.mp3; sourceTree = "<group>"; };
+		0F1C5D122C8C8CCF001B78CE /* neko_start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = neko_start.mp3; path = ../../../../../Downloads/neko_start.mp3; sourceTree = "<group>"; };
 		0FAD42052C8C453B00C76A9C /* NekonoteState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NekonoteState.swift; sourceTree = "<group>"; };
 		9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mimi_font-Regular.ttf"; sourceTree = "<group>"; };
 		9EEFCA362C8C4A8600CDE604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -57,6 +67,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F1C5D092C8C8718001B78CE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0F1C5D122C8C8CCF001B78CE /* neko_start.mp3 */,
+				0F1C5D102C8C8C8B001B78CE /* attack_3.mp3 */,
+				0F1C5D0E2C8C8C47001B78CE /* attack_2.mp3 */,
+				0F1C5D0A2C8C873F001B78CE /* attack_1.mp3 */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		0FAD42042C8C452400C76A9C /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +114,7 @@
 		AB466FC02C8C2DDA00CA5B06 /* StreetFighner7 */ = {
 			isa = PBXGroup;
 			children = (
+				0F1C5D092C8C8718001B78CE /* Resources */,
 				0FAD42042C8C452400C76A9C /* Models */,
 				9EEFCA362C8C4A8600CDE604 /* Info.plist */,
 				9EEFCA332C8C3DB900CDE604 /* Fonts */,
@@ -102,6 +124,7 @@
 				AB466FC32C8C2DDA00CA5B06 /* ContentView.swift */,
 				AB466FC52C8C2DDB00CA5B06 /* Assets.xcassets */,
 				AB466FC72C8C2DDB00CA5B06 /* Preview Content */,
+				0F1C5D0C2C8C8B2A001B78CE /* SoundManager.swift */,
 			);
 			path = StreetFighner7;
 			sourceTree = "<group>";
@@ -187,8 +210,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F1C5D112C8C8C8B001B78CE /* attack_3.mp3 in Resources */,
+				0F1C5D132C8C8CCF001B78CE /* neko_start.mp3 in Resources */,
 				AB466FC92C8C2DDB00CA5B06 /* Preview Assets.xcassets in Resources */,
 				AB466FC62C8C2DDB00CA5B06 /* Assets.xcassets in Resources */,
+				0F1C5D0F2C8C8C47001B78CE /* attack_2.mp3 in Resources */,
+				0F1C5D0B2C8C873F001B78CE /* attack_1.mp3 in Resources */,
 				9EEFCA352C8C49FD00CDE604 /* Mimi_font-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,6 +232,7 @@
 				AB466FD02C8C34DC00CA5B06 /* AppDelegate.swift in Sources */,
 				AB466FFF2C8C3B0500CA5B06 /* DefenseView.swift in Sources */,
 				9EEFCA382C8C7CC600CDE604 /* UIViewControllerWrapper.swift in Sources */,
+				0F1C5D0D2C8C8B2A001B78CE /* SoundManager.swift in Sources */,
 				AB4670002C8C3B0500CA5B06 /* JoinRoomView.swift in Sources */,
 				AB4670012C8C3B0500CA5B06 /* ResultView.swift in Sources */,
 				AB466FC42C8C2DDA00CA5B06 /* ContentView.swift in Sources */,
