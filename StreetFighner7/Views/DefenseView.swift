@@ -2,7 +2,6 @@ import SwiftUI
 
 struct DefenseView: View {
     @State private var gameModel = NekonoteModel(state: .center)
-    @State private var isAttacked = false // 新しい状態
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
     
@@ -34,12 +33,14 @@ struct DefenseView: View {
                     }
                     
                     // アタック時のオーバーレイ
-                    if isAttacked {
-                        Image("concentration_line")
-                            .resizable()
-                            .scaledToFill()
-                            .opacity(0.5) // 半透明にして重ね合わせる
-                            .ignoresSafeArea()
+                    if gameModel.isAttacked {
+                        ZStack {
+                            Image("concentration_line")
+                                .resizable()
+                                .scaledToFill()
+                                .opacity(0.5) // 半透明にして重ね合わせる
+                                .ignoresSafeArea()
+                        }
                     }
                 }
                 
@@ -69,9 +70,9 @@ struct DefenseView: View {
     
     private func handleAttack() {
         // アタックされたときの処理
-        isAttacked = true
+        gameModel.isAttacked = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            isAttacked = false
+            gameModel.isAttacked = false
         }
     }
 }
