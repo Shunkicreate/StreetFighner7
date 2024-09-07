@@ -20,6 +20,7 @@ struct ResultView: View {
     var neko_fat_image: String {
         return "neko_ilust_fat_" + String(neko_fat_level)
     }
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -86,6 +87,9 @@ struct ResultView: View {
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
+            }.onAppear {
+                // 画面ロード時にサウンドを再生する
+                SoundManager.shared.playSound("result_sound")
             }
             
         }
