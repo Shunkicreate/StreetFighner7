@@ -27,7 +27,7 @@ struct AttackView: View {
     @State var path = NavigationPath()
     @State var isFromResult = false
     return NavigationStack(path: $path) {
-        AttackView(path: $path, isFromResult: $isFromResult)
+        PortraitViewControllerWrapper(content: AttackView(path: $path, isFromResult: $isFromResult))
     }
 }
 

@@ -8,7 +8,7 @@ struct CreateRoomView: View {
         VStack {
             Text("Create Room Screen")
                 .font(.largeTitle)
-            NavigationLink("Start Game (Attack)", destination: AttackView(path: $path, isFromResult: $isFromResult))
+            NavigationLink("Start Game (Attack)", destination: PortraitViewControllerWrapper(content: AttackView(path: $path, isFromResult: $isFromResult)))
         }
         .padding()
     }
