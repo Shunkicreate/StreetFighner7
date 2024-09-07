@@ -28,6 +28,7 @@
 		AB4670012C8C3B0500CA5B06 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FFA2C8C3B0500CA5B06 /* ResultView.swift */; };
 		AB4670022C8C3B0500CA5B06 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FFB2C8C3B0500CA5B06 /* TitleView.swift */; };
 		AB46700C2C8C889700CA5B06 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB46700B2C8C889700CA5B06 /* MotionManager.swift */; };
+		E40823D52C8CB0F2001A4BA9 /* GameCountdownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40823D42C8CB0F2001A4BA9 /* GameCountdownModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		AB466FFA2C8C3B0500CA5B06 /* ResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		AB466FFB2C8C3B0500CA5B06 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		AB46700B2C8C889700CA5B06 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		E40823D42C8CB0F2001A4BA9 /* GameCountdownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCountdownModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				9EEFCA462C8CA08C00CDE604 /* NekonoteState.swift */,
 				9EEFCA472C8CA08C00CDE604 /* RotateScreenModel.swift */,
+				E40823D42C8CB0F2001A4BA9 /* GameCountdownModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				AB466FFE2C8C3B0500CA5B06 /* CreateRoomView.swift in Sources */,
 				9EEFCA4D2C8CA08C00CDE604 /* NekonoteState.swift in Sources */,
 				AB466FFD2C8C3B0500CA5B06 /* AttackView.swift in Sources */,
+				E40823D52C8CB0F2001A4BA9 /* GameCountdownModel.swift in Sources */,
 				AB466FC22C8C2DDA00CA5B06 /* StreetFighner7App.swift in Sources */,
 				AB4670022C8C3B0500CA5B06 /* TitleView.swift in Sources */,
 			);
