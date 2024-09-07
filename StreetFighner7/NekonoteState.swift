@@ -28,10 +28,25 @@ struct NekonoteModel {
     }
 }
 
+// Churuのモデルを表すstruct
+struct ChuruModel {
+    var position: CatHandDirection
+    
+    // 初期化メソッド
+    init(position: CatHandDirection = .center) {
+        self.position = position
+    }
+    
+    // Churuの位置を更新するメソッド
+    mutating func updatePosition(x: CGFloat) {
+        self.position = CatHandDirection.calcDirection(x: x)
+    }
+}
+
 enum CatHandDirection: String {
-    case centr = "真ん中"
-    case left = "左"
-    case right = "右"
+    case center
+    case left
+    case right
 }
 
 extension CatHandDirection {
@@ -41,7 +56,7 @@ extension CatHandDirection {
         } else if x < -0.5 {
             return .left
         } else {
-            return .centr
+            return .center
         }
     }
 }
