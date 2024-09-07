@@ -25,7 +25,7 @@ struct AttackView: View {
             rotateScreenModel.rotateScreen(orientation: .portrait)
         }
         .onDisappear {
-            rotateScreenModel.rotateScreen(orientation: .landscape)
+            rotateScreenModel.rotateScreen(orientation: .landscapeLeft)
         }
     }
 }
