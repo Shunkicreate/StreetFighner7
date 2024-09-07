@@ -11,7 +11,6 @@
 		0F5DC0702C8CADAF002F26A4 /* ResultScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5DC06F2C8CADAF002F26A4 /* ResultScore.swift */; };
 		0F5DC0722C8D0DA0002F26A4 /* result_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0F5DC0712C8D0DA0002F26A4 /* result_sound.mp3 */; };
 		9EEFCA352C8C49FD00CDE604 /* Mimi_font-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */; };
-		9EEFCA3E2C8C86BA00CDE604 /* PunchTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA3D2C8C86BA00CDE604 /* PunchTestView.swift */; };
 		9EEFCA492C8CA08C00CDE604 /* attack_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA412C8CA08C00CDE604 /* attack_1.mp3 */; };
 		9EEFCA4A2C8CA08C00CDE604 /* attack_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA422C8CA08C00CDE604 /* attack_2.mp3 */; };
 		9EEFCA4B2C8CA08C00CDE604 /* attack_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA432C8CA08C00CDE604 /* attack_3.mp3 */; };
@@ -45,7 +44,6 @@
 		0F5DC0712C8D0DA0002F26A4 /* result_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = result_sound.mp3; sourceTree = "<group>"; };
 		9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mimi_font-Regular.ttf"; sourceTree = "<group>"; };
 		9EEFCA362C8C4A8600CDE604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		9EEFCA3D2C8C86BA00CDE604 /* PunchTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunchTestView.swift; sourceTree = "<group>"; };
 		9EEFCA412C8CA08C00CDE604 /* attack_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = attack_1.mp3; sourceTree = "<group>"; };
 		9EEFCA422C8CA08C00CDE604 /* attack_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = attack_2.mp3; sourceTree = "<group>"; };
 		9EEFCA432C8CA08C00CDE604 /* attack_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = attack_3.mp3; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 				AB466FF92C8C3B0500CA5B06 /* JoinRoomView.swift */,
 				AB466FFA2C8C3B0500CA5B06 /* ResultView.swift */,
 				AB466FFB2C8C3B0500CA5B06 /* TitleView.swift */,
-				9EEFCA3D2C8C86BA00CDE604 /* PunchTestView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,7 +269,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB466FD02C8C34DC00CA5B06 /* AppDelegate.swift in Sources */,
-				9EEFCA3E2C8C86BA00CDE604 /* PunchTestView.swift in Sources */,
 				9EEFCA4E2C8CA08C00CDE604 /* RotateScreenModel.swift in Sources */,
 				B7DF60FF2C8CE113000D428F /* CreateRoomViewModel.swift in Sources */,
 				0F5DC0702C8CADAF002F26A4 /* ResultScore.swift in Sources */,
