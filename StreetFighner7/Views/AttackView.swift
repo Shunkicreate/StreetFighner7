@@ -4,7 +4,7 @@ struct AttackView: View {
     @ObservedObject var rotateScreenModel: RotateScreenModel
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
-    
+    @StateObject private var resultScore = ResultScore()
     @StateObject private var motionManager = MotionManager()
     @State private var CatHandModel = (isAttack: false, position: CatHandDirection.center)
     
@@ -12,7 +12,7 @@ struct AttackView: View {
         VStack {
             Text("Attack Screen")
                 .font(.largeTitle)
-            NavigationLink(destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult)) {
+            NavigationLink(destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult, resultScore: resultScore)) {
                 Text("り ざ る と")
                     .font(Font.custom("Mimi_font-Regular", size: 24))
                     .padding()

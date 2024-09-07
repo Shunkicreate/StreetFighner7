@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F1C5D0D2C8C8B2A001B78CE /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C5D0C2C8C8B2A001B78CE /* SoundManager.swift */; };
+		0F5DC0702C8CADAF002F26A4 /* ResultScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5DC06F2C8CADAF002F26A4 /* ResultScore.swift */; };
 		9EEFCA352C8C49FD00CDE604 /* Mimi_font-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */; };
 		9EEFCA3E2C8C86BA00CDE604 /* PunchTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA3D2C8C86BA00CDE604 /* PunchTestView.swift */; };
 		9EEFCA492C8CA08C00CDE604 /* attack_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA412C8CA08C00CDE604 /* attack_1.mp3 */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		0F1C5D0C2C8C8B2A001B78CE /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		0F5DC06F2C8CADAF002F26A4 /* ResultScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScore.swift; sourceTree = "<group>"; };
 		9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mimi_font-Regular.ttf"; sourceTree = "<group>"; };
 		9EEFCA362C8C4A8600CDE604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9EEFCA3D2C8C86BA00CDE604 /* PunchTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunchTestView.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			children = (
 				9EEFCA462C8CA08C00CDE604 /* NekonoteState.swift */,
 				9EEFCA472C8CA08C00CDE604 /* RotateScreenModel.swift */,
+				0F5DC06F2C8CADAF002F26A4 /* ResultScore.swift */,
 				E40823D42C8CB0F2001A4BA9 /* GameCountdownModel.swift */,
 			);
 			path = Models;
@@ -241,6 +244,7 @@
 				AB466FD02C8C34DC00CA5B06 /* AppDelegate.swift in Sources */,
 				9EEFCA3E2C8C86BA00CDE604 /* PunchTestView.swift in Sources */,
 				9EEFCA4E2C8CA08C00CDE604 /* RotateScreenModel.swift in Sources */,
+				0F5DC0702C8CADAF002F26A4 /* ResultScore.swift in Sources */,
 				AB466FFF2C8C3B0500CA5B06 /* DefenseView.swift in Sources */,
 				0F1C5D0D2C8C8B2A001B78CE /* SoundManager.swift in Sources */,
 				AB4670002C8C3B0500CA5B06 /* JoinRoomView.swift in Sources */,

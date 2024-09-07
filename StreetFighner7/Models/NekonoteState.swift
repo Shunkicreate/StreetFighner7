@@ -8,6 +8,20 @@ enum NekonoteState {
     case right
     case paused
     case gameOver
+    func toString() -> String {
+            switch self {
+            case .left:
+                return "left"
+            case .center:
+                return "center"
+            case .right:
+                return "right"
+            case .paused:
+                return "paused"
+            case .gameOver:
+                return "gameOver"
+            }
+        }
 }
 
 // ゲームモデルを表すstruct
