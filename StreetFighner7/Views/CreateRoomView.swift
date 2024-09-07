@@ -6,6 +6,7 @@ struct CreateRoomView: View {
     @Binding var isFromResult: Bool
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = CreateRoomViewModel()
+    /// 対戦画面への遷移フラグ
     @State private var isNavigationActive = false
     
     var body: some View {
@@ -45,6 +46,7 @@ struct CreateRoomView: View {
                 }
                 Button(action:{
                     viewModel.join()
+                    viewModel.send(message: .init(type: .start, message: ""))
                     isNavigationActive = true
                 }) {
                     Text("たたかう")

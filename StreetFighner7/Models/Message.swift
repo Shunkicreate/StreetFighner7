@@ -7,10 +7,17 @@
 
 import Foundation
 
-class Message: Decodable, Encodable, Identifiable, Hashable {
+enum MessageType: Int, Codable {
+    case ready = 0
+    case start = 1
+}
+
+class Message: Codable, Identifiable, Hashable {
+    let type: MessageType
     let message: String
     
-    init(message: String) {
+    init(type: MessageType, message: String) {
+        self.type = type
         self.message = message
     }
     

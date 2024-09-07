@@ -55,6 +55,16 @@ class CreateRoomViewModel: NSObject, ObservableObject {
             .store(in: &subscriptions)
         
         browser.startBrowsingForPeers()
+        
+        $sessionState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                if state == .connected {
+                    self?.join()
+                    self?.send(message: Message(type: .ready, message: ""))
+                }
+            }
+            .store(in: &subscriptions)
     }
     
     func finishBrowsing() {

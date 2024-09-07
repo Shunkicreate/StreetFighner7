@@ -8,6 +8,8 @@ struct JoinRoomView: View {
     @Binding var isFromResult: Bool
     /// 対戦相手の情報
     @State private var joinedPeer: PeerDevice?
+    /// 対戦画面への遷移フラグ
+    @State private var isNavigationActive = false
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -34,18 +36,19 @@ struct JoinRoomView: View {
 
                 Spacer()
 
-                NavigationLink(destination: DefenseView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult)) {
-                    Text("たたかう")
-                        .font(Font.custom("Mimi_font-Regular", size: 24))
-                        .padding()
-                        .frame(width: 250, height: 65)
-                        .background(joinedPeer == nil ? Color.gray : Color.black)
-                        .foregroundColor(joinedPeer == nil ? Color.black : Color.white)
-                        .cornerRadius(.infinity)
+                NavigationLink(destination: DefenseView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult), isActive: $isNavigationActive) {
+                    Text(joinRoomViewModel.messages.first(where: {
+                        $0.type == .ready
+                    })?.type == .ready ? "かいしをまっています！" : "じゅんびちゅう、、、")
+                    .font(Font.custom("Mimi_font-Regular", size: 24))
+                    .padding()
+                    .frame(width: 250, height: 65)
+                    .background(Color.gray)
+                    .foregroundColor(Color.black)
+                    .cornerRadius(.infinity)
                 }
-                .disabled(joinedPeer == nil)
+                .disabled(true)
                 .padding(5)
-                
                 Spacer()
             }
             .padding()
@@ -74,6 +77,11 @@ struct JoinRoomView: View {
                 })
             )
         })
+        .onChange(of: joinRoomViewModel.messages) {
+            if joinRoomViewModel.messages.first(where: { $0.type == .start }) != nil {
+                isNavigationActive = true
+            }
+        }
     }
     
     var backButton: some View {
