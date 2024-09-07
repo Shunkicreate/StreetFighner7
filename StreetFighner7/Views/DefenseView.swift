@@ -78,28 +78,38 @@ struct DefenseView: View {
                 VStack {
                     HStack {
                         Button("Left") {
-                            handleAttack()
                             gameModel.state = .left
+                            handleAttack()
                             
                         }
                         Button("Center") {
-                            handleAttack()
                             gameModel.state = .center
+                            handleAttack()
                         }
                         Button("Right") {
-                            handleAttack()
                             gameModel.state = .right
+                            handleAttack()
                         }
                         NavigationLink("Go to Result", destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
-                    }
-                    .padding()
+                    }.padding()
+                    HStack {
+                        Button("Left") {
+                            churuModel.position = .left
+                        }
+                        Button("Center") {
+                            churuModel.position = .center
+                        }
+                        Button("Right") {
+                            churuModel.position = .right
+                        }
+                    }.padding()
                     
                     // 結果画面への遷移リンク
                     NavigationLink("Go to Result", destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
-                }
-                .padding()
+                }                .padding()
                 .navigationBarBackButtonHidden(true)
             }
+            
         }
         .onAppear {
             motionManager.startAccelerometer(interval: 0.1) // 加速度センサー開始
@@ -127,7 +137,11 @@ struct DefenseView: View {
 
     // アタックされたときの処理
     private func handleAttack() {
-        actionAttack()
+        if (gameModel.state.toString() == churuModel.position.rawValue){
+            actionAttack()
+        } else {
+            // 当たっていない時
+        }
     }
     
     private func actionAttack() {
