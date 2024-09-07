@@ -6,5 +6,12 @@
 	<array>
 		<string>Mimi_font-Regular.ttf</string>
 	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>本アプリはP2P通信を使用します</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_nearby-devices._tcp</string>
+		<string>_nearby-devices._udp</string>
+	</array>
 </dict>
 </plist>

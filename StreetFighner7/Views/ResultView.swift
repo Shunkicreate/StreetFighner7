@@ -10,18 +10,15 @@ struct ResultView: View {
     // 結果のねこの太り具合を調整
     let neko_fat_standard_score = 10
     let neko_fat_standard_level = 5
-
-    // neko_fat_levelを計算するコンピューテッドプロパティ
-    var neko_fat_level: Int {
-        let totalSuccess = resultScore.totalSuccess
-        return max(1, min(5, Int(totalSuccess / neko_fat_standard_level) / neko_fat_standard_score))
-    }
-    // neko_fat_imageの名前
-    var neko_fat_image: String {
-        return "neko_ilust_fat_" + String(neko_fat_level)
-    }
     
     var body: some View {
+        // 太り具合の計算
+        let nonlimit_neko_fat_level = Int(ceil(Double(resultScore.totalSuccess) / (Double(neko_fat_standard_score) / Double(neko_fat_standard_level))))
+        let neko_fat_level = max(1, min(nonlimit_neko_fat_level, Int(neko_fat_standard_level)))
+        
+        var neko_fat_image: String {
+            return "neko_ilust_fat_" + String(neko_fat_level)
+        }
         GeometryReader { geometry in
             ZStack {
                 // リザルト画面のコンテンツ
