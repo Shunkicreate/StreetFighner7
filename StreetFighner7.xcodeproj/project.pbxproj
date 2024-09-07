@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F1C5D0D2C8C8B2A001B78CE /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C5D0C2C8C8B2A001B78CE /* SoundManager.swift */; };
+		0F5DC0702C8CADAF002F26A4 /* ResultScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5DC06F2C8CADAF002F26A4 /* ResultScore.swift */; };
 		9EEFCA352C8C49FD00CDE604 /* Mimi_font-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */; };
 		9EEFCA3E2C8C86BA00CDE604 /* PunchTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA3D2C8C86BA00CDE604 /* PunchTestView.swift */; };
 		9EEFCA492C8CA08C00CDE604 /* attack_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA412C8CA08C00CDE604 /* attack_1.mp3 */; };
@@ -16,6 +17,7 @@
 		9EEFCA4C2C8CA08C00CDE604 /* neko_start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA442C8CA08C00CDE604 /* neko_start.mp3 */; };
 		9EEFCA4D2C8CA08C00CDE604 /* NekonoteState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA462C8CA08C00CDE604 /* NekonoteState.swift */; };
 		9EEFCA4E2C8CA08C00CDE604 /* RotateScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA472C8CA08C00CDE604 /* RotateScreenModel.swift */; };
+		AB2332EC2C8CCE9E00A33BCB /* VibrationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2332EB2C8CCE9E00A33BCB /* VibrationManager.swift */; };
 		AB466FC22C8C2DDA00CA5B06 /* StreetFighner7App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FC12C8C2DDA00CA5B06 /* StreetFighner7App.swift */; };
 		AB466FC42C8C2DDA00CA5B06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FC32C8C2DDA00CA5B06 /* ContentView.swift */; };
 		AB466FC62C8C2DDB00CA5B06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB466FC52C8C2DDB00CA5B06 /* Assets.xcassets */; };
@@ -28,10 +30,12 @@
 		AB4670012C8C3B0500CA5B06 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FFA2C8C3B0500CA5B06 /* ResultView.swift */; };
 		AB4670022C8C3B0500CA5B06 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FFB2C8C3B0500CA5B06 /* TitleView.swift */; };
 		AB46700C2C8C889700CA5B06 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB46700B2C8C889700CA5B06 /* MotionManager.swift */; };
+		E40823D52C8CB0F2001A4BA9 /* GameCountdownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40823D42C8CB0F2001A4BA9 /* GameCountdownModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0F1C5D0C2C8C8B2A001B78CE /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		0F5DC06F2C8CADAF002F26A4 /* ResultScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScore.swift; sourceTree = "<group>"; };
 		9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mimi_font-Regular.ttf"; sourceTree = "<group>"; };
 		9EEFCA362C8C4A8600CDE604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9EEFCA3D2C8C86BA00CDE604 /* PunchTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunchTestView.swift; sourceTree = "<group>"; };
@@ -41,6 +45,7 @@
 		9EEFCA442C8CA08C00CDE604 /* neko_start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = neko_start.mp3; sourceTree = "<group>"; };
 		9EEFCA462C8CA08C00CDE604 /* NekonoteState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NekonoteState.swift; sourceTree = "<group>"; };
 		9EEFCA472C8CA08C00CDE604 /* RotateScreenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotateScreenModel.swift; sourceTree = "<group>"; };
+		AB2332EB2C8CCE9E00A33BCB /* VibrationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VibrationManager.swift; sourceTree = "<group>"; };
 		AB466FBE2C8C2DDA00CA5B06 /* StreetFighner7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreetFighner7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB466FC12C8C2DDA00CA5B06 /* StreetFighner7App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetFighner7App.swift; sourceTree = "<group>"; };
 		AB466FC32C8C2DDA00CA5B06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +59,7 @@
 		AB466FFA2C8C3B0500CA5B06 /* ResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		AB466FFB2C8C3B0500CA5B06 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		AB46700B2C8C889700CA5B06 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		E40823D42C8CB0F2001A4BA9 /* GameCountdownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCountdownModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,8 @@
 			children = (
 				9EEFCA462C8CA08C00CDE604 /* NekonoteState.swift */,
 				9EEFCA472C8CA08C00CDE604 /* RotateScreenModel.swift */,
+				0F5DC06F2C8CADAF002F26A4 /* ResultScore.swift */,
+				E40823D42C8CB0F2001A4BA9 /* GameCountdownModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				AB46700B2C8C889700CA5B06 /* MotionManager.swift */,
+				AB2332EB2C8CCE9E00A33BCB /* VibrationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -238,15 +247,18 @@
 				AB466FD02C8C34DC00CA5B06 /* AppDelegate.swift in Sources */,
 				9EEFCA3E2C8C86BA00CDE604 /* PunchTestView.swift in Sources */,
 				9EEFCA4E2C8CA08C00CDE604 /* RotateScreenModel.swift in Sources */,
+				0F5DC0702C8CADAF002F26A4 /* ResultScore.swift in Sources */,
 				AB466FFF2C8C3B0500CA5B06 /* DefenseView.swift in Sources */,
 				0F1C5D0D2C8C8B2A001B78CE /* SoundManager.swift in Sources */,
 				AB4670002C8C3B0500CA5B06 /* JoinRoomView.swift in Sources */,
 				AB4670012C8C3B0500CA5B06 /* ResultView.swift in Sources */,
 				AB46700C2C8C889700CA5B06 /* MotionManager.swift in Sources */,
+				AB2332EC2C8CCE9E00A33BCB /* VibrationManager.swift in Sources */,
 				AB466FC42C8C2DDA00CA5B06 /* ContentView.swift in Sources */,
 				AB466FFE2C8C3B0500CA5B06 /* CreateRoomView.swift in Sources */,
 				9EEFCA4D2C8CA08C00CDE604 /* NekonoteState.swift in Sources */,
 				AB466FFD2C8C3B0500CA5B06 /* AttackView.swift in Sources */,
+				E40823D52C8CB0F2001A4BA9 /* GameCountdownModel.swift in Sources */,
 				AB466FC22C8C2DDA00CA5B06 /* StreetFighner7App.swift in Sources */,
 				AB4670022C8C3B0500CA5B06 /* TitleView.swift in Sources */,
 			);
@@ -379,10 +391,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StreetFighner7/Preview Content\"";
-				DEVELOPMENT_TEAM = 6362YQU9LF;
+				DEVELOPMENT_TEAM = 8K2Z64AUSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StreetFighner7/Info.plist;
@@ -396,7 +409,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shunki.StreetFighner70;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shunki.StreetFighner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -409,10 +422,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StreetFighner7/Preview Content\"";
-				DEVELOPMENT_TEAM = 6362YQU9LF;
+				DEVELOPMENT_TEAM = 8K2Z64AUSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StreetFighner7/Info.plist;
@@ -426,7 +440,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.shunki.StreetFighner70;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shunki.StreetFighner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

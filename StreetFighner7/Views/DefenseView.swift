@@ -3,13 +3,14 @@ import AVFoundation
 
 struct DefenseView: View {
     @StateObject private var motionManager = MotionManager()
+    @StateObject private var resultScore = ResultScore()
     @ObservedObject var rotateScreenModel: RotateScreenModel
     @State private var gameModel = NekonoteModel(state: .center)
     @State private var churuModel = ChuruModel(position: .center)
     @State private var audioPlayer: AVAudioPlayer?
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
-
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .bottom) {
@@ -47,18 +48,18 @@ struct DefenseView: View {
                 #if DEBUG
                 HStack {
                     Button("Left") {
-                        actionAttack()
+                        handleAttack()
                         gameModel.state = .left
                     }.foregroundStyle(.red)
                     Button("Center") {
-                        actionAttack()
+                        handleAttack()
                         gameModel.state = .center
                     }.foregroundStyle(.blue)
                     Button("Right") {
-                        actionAttack()
+                        handleAttack()
                         gameModel.state = .right
                     }.foregroundStyle(.red)
-                    NavigationLink("Go to Result", destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
+                    NavigationLink("Go to Result", destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult, resultScore: resultScore))
                 }
                 .padding()
                 #endif
@@ -93,13 +94,9 @@ struct DefenseView: View {
             churuModel.updatePosition(x: 0.0)
         }
     }
-    
-    private func actionAttack() {
-        let soundNameList = ["attack_1", "attack_2", "attack_3"]
-        let randomIndex = Int.random(in: 0..<soundNameList.count)
-        let soundName = soundNameList[randomIndex]
-        SoundManager.shared.playSound(soundName)
 
+    // アタックされたときの処理
+    private func handleAttack() {
         withAnimation(.easeInOut(duration: 0.3), completionCriteria: .logicallyComplete) {
             gameModel.isAttacked = true
         } completion: {
@@ -107,6 +104,28 @@ struct DefenseView: View {
                 gameModel.isAttacked = false
             }
         }
+        if (gameModel.state.toString() == churuModel.position.rawValue){
+            actionAttack()
+        } else {
+            // 当たっていない時
+            resultScore.recordFailure(at: churuModel.position)
+        }
+    }
+    
+    private func handleAvoid() {
+        resultScore.recordAvoid()
+    }
+    
+    private func actionAttack() {
+        let soundNameList = ["attack_1", "attack_2", "attack_3"]
+        let randomIndex = Int.random(in: 0..<soundNameList.count)
+        let soundName = soundNameList[randomIndex]
+        SoundManager.shared.playSound(soundName)
+
+        // バイブレーションも鳴らす
+        VibrationManager.shared.triggerNotificationFeedback(type: .success)
+        // 回数の保存
+        resultScore.recordSuccess(at: churuModel.position)
     }
 }
 
