@@ -84,6 +84,9 @@ struct ResultView: View {
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
+            }.onAppear {
+                // 画面ロード時にサウンドを再生する
+                SoundManager.shared.playSound("result_sound")
             }
             
         }

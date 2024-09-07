@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0F1C5D0D2C8C8B2A001B78CE /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C5D0C2C8C8B2A001B78CE /* SoundManager.swift */; };
 		0F5DC0702C8CADAF002F26A4 /* ResultScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5DC06F2C8CADAF002F26A4 /* ResultScore.swift */; };
+		0F5DC0722C8D0DA0002F26A4 /* result_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0F5DC0712C8D0DA0002F26A4 /* result_sound.mp3 */; };
 		9EEFCA352C8C49FD00CDE604 /* Mimi_font-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */; };
 		9EEFCA3E2C8C86BA00CDE604 /* PunchTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA3D2C8C86BA00CDE604 /* PunchTestView.swift */; };
 		9EEFCA492C8CA08C00CDE604 /* attack_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA412C8CA08C00CDE604 /* attack_1.mp3 */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		0F1C5D0C2C8C8B2A001B78CE /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		0F5DC06F2C8CADAF002F26A4 /* ResultScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultScore.swift; sourceTree = "<group>"; };
+		0F5DC0712C8D0DA0002F26A4 /* result_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = result_sound.mp3; sourceTree = "<group>"; };
 		9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mimi_font-Regular.ttf"; sourceTree = "<group>"; };
 		9EEFCA362C8C4A8600CDE604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9EEFCA3D2C8C86BA00CDE604 /* PunchTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunchTestView.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		9EEFCA452C8CA08C00CDE604 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0F5DC0712C8D0DA0002F26A4 /* result_sound.mp3 */,
 				9EEFCA412C8CA08C00CDE604 /* attack_1.mp3 */,
 				9EEFCA422C8CA08C00CDE604 /* attack_2.mp3 */,
 				9EEFCA432C8CA08C00CDE604 /* attack_3.mp3 */,
@@ -255,6 +258,7 @@
 				AB466FC92C8C2DDB00CA5B06 /* Preview Assets.xcassets in Resources */,
 				AB466FC62C8C2DDB00CA5B06 /* Assets.xcassets in Resources */,
 				9EEFCA4A2C8CA08C00CDE604 /* attack_2.mp3 in Resources */,
+				0F5DC0722C8D0DA0002F26A4 /* result_sound.mp3 in Resources */,
 				9EEFCA492C8CA08C00CDE604 /* attack_1.mp3 in Resources */,
 				9EEFCA352C8C49FD00CDE604 /* Mimi_font-Regular.ttf in Resources */,
 			);
