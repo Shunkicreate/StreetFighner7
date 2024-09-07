@@ -30,7 +30,7 @@ struct ResultView: View {
                             .padding(.bottom, 5)
 
                         Text("叩いた回数")
-                        Text("\(resultScore.totalSuccess)回")
+                        Text("\(resultScore.totalSuccess+resultScore.totalFailure)回")
                             .padding(.bottom, 5)
 
                         Text("取得したチュール")
