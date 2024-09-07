@@ -7,6 +7,7 @@ struct JoinRoomView: View {
     
     @State private var users: [User] = [] // 初期状態は空のリスト
     @State private var selectedUser: User? = nil
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
@@ -67,8 +68,19 @@ struct JoinRoomView: View {
                     Spacer()
                 }
                 .padding()
-                .navigationBarBackButtonHidden(true)
             }
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: backButton)
+    }
+    
+    var backButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Text("もどる")
+                .font(Font.custom("Mimi_font-Regular", size: 30))
+                .foregroundStyle(.black)
         }
     }
 }
