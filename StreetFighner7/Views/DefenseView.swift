@@ -1,12 +1,52 @@
 import SwiftUI
 
 struct DefenseView: View {
+    @State private var gameModel = NekonoteModel(state: .center)
+    
     var body: some View {
-        VStack {
-            Text("Defense Screen")
-                .font(.largeTitle)
-            NavigationLink("Go to Result", destination: ResultView())
+        GeometryReader { geometry in
+            ZStack {
+                Image("background")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                
+                ZStack {
+                    if gameModel.state == .left {
+                        Image("nekonote_reverse")
+                            .resizable()
+                            .scaledToFit()
+                            .position(x: geometry.size.width * 0.2, y: geometry.size.height * 0.3)
+                    } else if gameModel.state == .center {
+                        Image("nekonote_reverse")
+                            .resizable()
+                            .scaledToFit()
+                            .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.3)
+                    } else if gameModel.state == .right {
+                        Image("nekonote_reverse")
+                            .resizable()
+                            .scaledToFit()
+                            .position(x: geometry.size.width * 0.8, y: geometry.size.height * 0.3)
+                    }
+                }
+                
+                VStack {
+                    HStack {
+                        Button("Left") {
+                            gameModel.state = .left
+                        }
+                        Button("Center") {
+                            gameModel.state = .center
+                        }
+                        Button("Right") {
+                            gameModel.state = .right
+                        }
+                        NavigationLink("Go to Result", destination: ResultView())
+                    }
+                    .padding()
+                }
+                .padding()
+            }
         }
-        .padding()
     }
 }

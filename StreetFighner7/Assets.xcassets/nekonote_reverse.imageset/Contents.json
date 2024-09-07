@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "nekonote_reverse.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
