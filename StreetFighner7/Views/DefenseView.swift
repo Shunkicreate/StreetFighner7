@@ -170,6 +170,8 @@ struct DefenseView: View {
         // サウンドを再生
         SoundManager.shared.playSound(soundName)
         
+        // バイブレーションも鳴らす
+        VibrationManager.shared.triggerNotificationFeedback(type: .success)        
         // アタックされたときの処理
         gameModel.isAttacked = true
         // 回数の保存
