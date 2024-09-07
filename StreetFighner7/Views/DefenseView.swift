@@ -8,6 +8,7 @@ struct DefenseView: View {
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
     @StateObject private var motionManager = MotionManager() // MotionManagerを使用
+    @StateObject private var resultScore = ResultScore() // ResultScoreを追加
     
     @State private var audioPlayer: AVAudioPlayer?
     
@@ -90,22 +91,29 @@ struct DefenseView: View {
                             gameModel.state = .right
                             handleAttack()
                         }
-                        NavigationLink("Go to Result", destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
+                        NavigationLink("Go to Result", destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult, resultScore: resultScore))
                     }.padding()
                     HStack {
                         Button("Left") {
                             churuModel.position = .left
+                            handleAvoid()
                         }
                         Button("Center") {
                             churuModel.position = .center
+                            handleAvoid()
                         }
                         Button("Right") {
                             churuModel.position = .right
+                            handleAvoid()
                         }
+                    }
+                    // 成功と失敗の合計回数を表示
+                    VStack {
+                        Text("成功した合計: \(resultScore.totalSuccess)")
+                        Text("失敗した合計: \(resultScore.totalFailure)")
                     }.padding()
-                    
                     // 結果画面への遷移リンク
-                    NavigationLink("Go to Result", destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
+                    NavigationLink("Go to Result", destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult, resultScore: resultScore))
                 }                .padding()
                 .navigationBarBackButtonHidden(true)
             }
@@ -141,7 +149,12 @@ struct DefenseView: View {
             actionAttack()
         } else {
             // 当たっていない時
+            resultScore.recordFailure(at: churuModel.position)
         }
+    }
+    
+    private func handleAvoid(){
+        resultScore.recordAvoid()
     }
     
     private func actionAttack() {
@@ -159,6 +172,8 @@ struct DefenseView: View {
         
         // アタックされたときの処理
         gameModel.isAttacked = true
+        // 回数の保存
+        resultScore.recordSuccess(at: churuModel.position)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             gameModel.isAttacked = false

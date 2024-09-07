@@ -4,11 +4,8 @@ struct ResultView: View {
     @ObservedObject var rotateScreenModel: RotateScreenModel
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
+    @ObservedObject var resultScore: ResultScore // ResultScoreを追加
 
-    // モックデータ
-    let catResult = ("猫", "叩いた回数", "30回", "取得したチュール", "15個")
-    let ownerResult = ("飼い主", "避けた回数", "15回", "あげてしまったチュール", "15個")
-    
     let colorOpacity: Double = 0.6
 
     var body: some View {
@@ -22,22 +19,22 @@ struct ResultView: View {
             // リザルト画面のコンテンツ
             VStack {
                 Text("リザルト")
-                    .font(.largeTitle)
+                    .font(Font.custom("Mimi_font-Regular", size: 40))
                     .padding()
 
                 HStack {
                     // 猫の結果
                     VStack(alignment: .leading) {
-                        Text(catResult.0)
-                            .font(.title)
+                        Text("猫")
+                            .font(Font.custom("Mimi_font-Regular", size: 35))
                             .padding(.bottom, 5)
 
-                        Text(catResult.1)
-                        Text(catResult.2)
+                        Text("叩いた回数")
+                        Text("\(resultScore.totalSuccess)回")
                             .padding(.bottom, 5)
 
-                        Text(catResult.3)
-                        Text(catResult.4)
+                        Text("取得したチュール")
+                        Text("\(resultScore.totalSuccess)個")
                     }
                     .padding()
                     .background(Color.gray.opacity(colorOpacity)) // 背景色
@@ -46,16 +43,16 @@ struct ResultView: View {
 
                     // 飼い主の結果
                     VStack(alignment: .leading) {
-                        Text(ownerResult.0)
-                            .font(.title)
+                        Text("かいぬし")
+                            .font(Font.custom("Mimi_font-Regular", size: 35))
                             .padding(.bottom, 5)
 
-                        Text(ownerResult.1)
-                        Text(ownerResult.2)
+                        Text("避けた回数")
+                        Text("\(resultScore.totalAvoid)回")
                             .padding(.bottom, 5)
 
-                        Text(ownerResult.3)
-                        Text(ownerResult.4)
+                        Text("あげてしまったチュール")
+                        Text("\(resultScore.totalFailure)個")
                     }
                     .padding()
                     .background(Color.gray.opacity(colorOpacity)) // 背景色
@@ -67,9 +64,10 @@ struct ResultView: View {
                 Spacer()
 
                 // タイトル画面に戻るボタン
-                NavigationLink("Back to Title", destination: TitleView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
+                NavigationLink("トップへ戻る", destination: TitleView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
                     .onTapGesture {
                         isFromResult = true // 遷移元がResultであることを設定
+                        resultScore.resetScores() // スコアをリセット
                     }
                     .padding()
                     .background(Color.gray.opacity(colorOpacity))
@@ -85,9 +83,10 @@ struct ResultView: View {
 struct StateWrapperForPreview: View {
     @State private var path = NavigationPath()
     @State private var isFromResult = false
+    @StateObject private var resultScore = ResultScore() // ResultScoreを追加
 
     var body: some View {
-        ResultView(rotateScreenModel: .init(), path: $path, isFromResult: $isFromResult)
+        ResultView(rotateScreenModel: .init(), path: $path, isFromResult: $isFromResult, resultScore: resultScore)
     }
 }
 
