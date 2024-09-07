@@ -36,18 +36,15 @@ final class MotionManager: ObservableObject {
             }
             self.accelerometerData = data
             
-            // MARK: 猫パンチ判
-            // 調整可能な閾値。デバイスを振ったと見なす加速度の値。
-            let yThreshold: Double = 0.7
-            let zThreshold: Double = 1.2
+            print("x: \(self.accelerometerData?.acceleration.x), y: \(self.accelerometerData?.acceleration.y), z: \(self.accelerometerData?.acceleration.z)")
             
-            if (fabs(data.acceleration.z) > zThreshold) {
-                print(data.acceleration.z)
-            }
+            // MARK: 猫パンチ判定
+            // 調整可能な閾値。デバイスを振ったと見なす加速度の値。
+            let yThreshold: Double = 1.5
+            let zThreshold: Double = 3.5
 
             if 
-//                (fabs(data.acceleration.y) > yThreshold || fabs(data.acceleration.z) > zThreshold),
-                (fabs(data.acceleration.z) > zThreshold),
+                (fabs(data.acceleration.y) > yThreshold || fabs(data.acceleration.z) > zThreshold),
                 let previousZ = self.previousZ,
                 previousZ > 0 {
                 self.isAttack = true
