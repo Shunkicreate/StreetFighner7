@@ -95,7 +95,7 @@ struct DefenseView: View {
                     .padding()
                     
                     // 結果画面への遷移リンク
-                    NavigationLink("Go to Result", destination: ResultView(path: $path, isFromResult: $isFromResult))
+                    NavigationLink("Go to Result", destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
                 }
                 .padding()
                 .navigationBarBackButtonHidden(true)
