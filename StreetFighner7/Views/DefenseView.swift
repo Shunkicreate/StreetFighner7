@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct DefenseView: View {
+    @ObservedObject var rotateScreenModel: RotateScreenModel
     @State private var gameModel = NekonoteModel(state: .center)
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
@@ -58,7 +59,7 @@ struct DefenseView: View {
                             handleAttack()
                             gameModel.state = .right
                         }
-                        NavigationLink("Go to Result", destination: ResultView(path: $path, isFromResult: $isFromResult))
+                        NavigationLink("Go to Result", destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
                     }
                     .padding()
                 }

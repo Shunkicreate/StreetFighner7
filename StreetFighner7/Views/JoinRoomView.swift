@@ -8,7 +8,7 @@ struct JoinRoomView: View {
         VStack {
             Text("Join Room Screen")
                 .font(.largeTitle)
-            NavigationLink("Start Game (Defense)", destination: DefenseView(path: $path, isFromResult: $isFromResult))
+            NavigationLink("Start Game (Defense)", destination: DefenseView(rotateScreenModel: .init(), path: $path, isFromResult: $isFromResult))
         }
         .padding()
     }

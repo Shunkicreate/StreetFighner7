@@ -1,10 +1,14 @@
 import UIKit
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    static var orientationLock = UIInterfaceOrientationMask.landscape // 横向きに固定
+    // 横向きに固定
+    static var orientationLock = UIInterfaceOrientationMask.landscape
 
-    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+    /// 画面の向きを設定
+    func application(
+        _ application: UIApplication,
+        supportedInterfaceOrientationsFor window: UIWindow?
+    ) -> UIInterfaceOrientationMask {
         return AppDelegate.orientationLock
     }
 }

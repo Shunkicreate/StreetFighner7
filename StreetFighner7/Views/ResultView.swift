@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ResultView: View {
+    @ObservedObject var rotateScreenModel: RotateScreenModel
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
 
@@ -66,7 +67,7 @@ struct ResultView: View {
                 Spacer()
 
                 // タイトル画面に戻るボタン
-                NavigationLink("Back to Title", destination: TitleView(path: $path, isFromResult: $isFromResult))
+                NavigationLink("Back to Title", destination: TitleView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
                     .onTapGesture {
                         isFromResult = true // 遷移元がResultであることを設定
                     }
@@ -86,7 +87,7 @@ struct StateWrapperForPreview: View {
     @State private var isFromResult = false
 
     var body: some View {
-        ResultView(path: $path, isFromResult: $isFromResult)
+        ResultView(rotateScreenModel: .init(), path: $path, isFromResult: $isFromResult)
     }
 }
 
