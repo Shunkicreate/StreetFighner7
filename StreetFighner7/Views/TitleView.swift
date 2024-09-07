@@ -41,9 +41,9 @@ struct TitleView: View {
                     .padding(5)
                 }
                 .padding()
-                .navigationBarBackButtonHidden(true)
-            }
+            } 
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
