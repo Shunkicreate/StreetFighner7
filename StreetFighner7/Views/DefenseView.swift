@@ -5,7 +5,7 @@ import AVFoundation
 struct NekonoteSetting {
     let imageName: String = "nekonote_reverse"
     let concentrationLineImage: String = "concentration_line"
-    let positions: [CGFloat] = [0.2, 0.5, 0.8] // 左, 中央, 右の位置
+    let positions: [CGFloat] = [0.4, 0.5, 0.7] // 左, 中央, 右の位置
 }
 
 struct ChuruSetting {
@@ -22,11 +22,16 @@ struct DefenseView: View {
     @Binding var isFromResult: Bool
     @StateObject private var motionManager = MotionManager()
     @State private var audioPlayer: AVAudioPlayer?
-
+    
     // 設定オブジェクトのインスタンス
     private let nekonoteSetting = NekonoteSetting()
     private let churuSetting = ChuruSetting()
     
+    // 変数化したアニメーションのduration
+    private let animationDuration: Double = 0.3
+    private let attackDuration: Double = 0.3
+    private let resetDuration: Double = 0.1
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -35,27 +40,32 @@ struct DefenseView: View {
                     .scaledToFill()
                     .ignoresSafeArea()
                 
-                VStack {
-                    // Nekonoteの表示
-                    NekonoteImage(gameModel: gameModel, setting: nekonoteSetting, geometry: geometry)
-                    
+                ZStack(alignment: .bottom ) {
                     // Churuの表示
                     ChuruImage(churuModel: churuModel, setting: churuSetting, geometry: geometry)
+                    // Nekonoteの表示
+                    NekonoteImage(gameModel: gameModel, setting: nekonoteSetting, geometry: geometry, animationDuration: animationDuration)
                 }
                 
                 VStack {
                     HStack {
                         Button("Left") {
                             handleAttack()
-                            gameModel.state = .left
+                            withAnimation(.easeInOut(duration: animationDuration)) {
+                                gameModel.state = .left
+                            }
                         }
                         Button("Center") {
                             handleAttack()
-                            gameModel.state = .center
+                            withAnimation(.easeInOut(duration: animationDuration)) {
+                                gameModel.state = .center
+                            }
                         }
                         Button("Right") {
                             handleAttack()
-                            gameModel.state = .right
+                            withAnimation(.easeInOut(duration: animationDuration)) {
+                                gameModel.state = .right
+                            }
                         }
                         NavigationLink("Go to Result", destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
                     }
@@ -81,11 +91,17 @@ struct DefenseView: View {
         guard let y = motionManager.accelerometerData?.acceleration.y else { return }
         
         if y > 0.5 {
-            churuModel.updatePosition(x: 1.0)
+            withAnimation(.easeInOut(duration: resetDuration)) {
+                churuModel.updatePosition(x: 1.0)
+            }
         } else if y < -0.5 {
-            churuModel.updatePosition(x: -1.0)
+            withAnimation(.easeInOut(duration: resetDuration)) {
+                churuModel.updatePosition(x: -1.0)
+            }
         } else {
-            churuModel.updatePosition(x: 0.0)
+            withAnimation(.easeInOut(duration: resetDuration)) {
+                churuModel.updatePosition(x: 0.0)
+            }
         }
     }
 
@@ -99,13 +115,20 @@ struct DefenseView: View {
         let randomIndex = Int.random(in: 0..<soundNameList.count)
         let soundName = soundNameList[randomIndex]
         SoundManager.shared.playSound(soundName)
-
-        gameModel.isAttacked = true
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            gameModel.isAttacked = false
+        // アニメーションを開始
+        withAnimation(.easeInOut(duration: attackDuration)) {
+            gameModel.isAttacked = true
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + attackDuration) {
+            // アニメーション終了後に元の状態に戻す
+            withAnimation(.easeInOut(duration: resetDuration)) {
+                gameModel.isAttacked = false
+            }
         }
     }
+
 }
 
 // Nekonoteの表示コンポーネント
@@ -113,16 +136,23 @@ struct NekonoteImage: View {
     let gameModel: NekonoteModel
     let setting: NekonoteSetting
     let geometry: GeometryProxy
+    let animationDuration: Double // アニメーションのdurationを外部から受け取る
     
+    @State private var scale: CGFloat = 1.0 // 初期スケールは1.0
+
     var body: some View {
         ZStack {
             let positionIndex = gameModel.state == .left ? 0 : gameModel.state == .center ? 1 : 2
             let xPosition = geometry.size.width * setting.positions[positionIndex]
             
+            // Nekonoteの画像にスケーリングアニメーションを適用し、上部を固定
             Image(setting.imageName)
                 .resizable()
                 .scaledToFit()
-                .position(x: xPosition, y: geometry.size.height * 0.4)
+                .frame(width: geometry.size.width * 0.1) // 画像サイズを明示的に指定
+                .position(x: xPosition, y: geometry.size.height * 0.16) // 中央位置に調整
+                .scaleEffect(gameModel.isAttacked ? 2.7 : 1.0, anchor: .top) // 上部を固定して拡大
+                .animation(.easeInOut(duration: animationDuration), value: gameModel.isAttacked) // スケーリングアニメーション
             
             if gameModel.isAttacked {
                 Image(setting.concentrationLineImage)
@@ -150,7 +180,7 @@ struct ChuruImage: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: setting.size.width, height: setting.size.height)
-                .position(x: xPosition, y: geometry.size.height * 0.2)
+                .position(x: xPosition, y: geometry.size.height * 0.7) // 固定されたY位置
         }
     }
 }
