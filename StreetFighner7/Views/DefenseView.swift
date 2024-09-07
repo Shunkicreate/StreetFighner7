@@ -16,18 +16,35 @@ struct DefenseView: View {
                 Image(.churuFukuro)
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 50)
+                    .frame(height: 70)
 
                 Image(.nekonoteReverse)
                     .resizable()
                     .scaledToFit()
                     .scaleEffect(1.05)
-                    .offset(y: gameModel.isAttacked ? 0 : -geometry.size.height * 1.05)
+                    .offset(
+                        x: {
+                            switch gameModel.state {
+                            case .left:
+                                geometry.size.width / -3
+                            case .center:
+                                0
+                            case .right:
+                                geometry.size.width / 3
+                            case .paused:
+                                fatalError("未実装")
+                            case .gameOver:
+                                fatalError("未実装")
+                            }
+                        }(),
+                        y: gameModel.isAttacked ? 0 : -geometry.size.height * 1.05
+                    )
             }
             .navigationBarBackButtonHidden(true)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .overlay(alignment: .bottom, content: {
                 // TODO: 削除(デバッグ用)
+                #if DEBUG
                 HStack {
                     Button("Left") {
                         actionAttack()
@@ -44,6 +61,7 @@ struct DefenseView: View {
                     NavigationLink("Go to Result", destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
                 }
                 .padding()
+                #endif
             })
             .background {
                 Image("background")
