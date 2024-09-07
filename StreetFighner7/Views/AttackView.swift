@@ -71,34 +71,61 @@ struct AttackView: View {
     }
     
     private func updateCatHandModel() {
-        var isAttack = motionManager.isAttack;
+        let zThreshold: Double = 0.04
+        
         var accelerometerData = motionManager.accelerometerData
         var deviceMotionData = motionManager.deviceMotionData
         
-        self.catHandModel.updateIsAttack(isAttack: (isAttack ?? false))
-            
-        if isAttack == false {
-            return
+        if catHandModel.isAttacking == false {
+            if
+                (fabs(catHandModel.previousZ ?? 0) > zThreshold),
+                catHandModel.previousZ ?? 0 > 0 && accelerometerData?.acceleration.z ?? 0 < 0 {
+                print("isAttacking",  catHandModel.previousZ)
+                catHandModel.updateIsAttacking(isAttacking: true)
+            }
+        } else {
+            //スマホがほぼ下に向いたら判定
+            // trueのままになる問題がある
+            if fabs(deviceMotionData?.attitude.pitch ?? 90) < 87 {
+                var yaw = (deviceMotionData?.attitude.yaw ?? 90) * 180 / Double.pi
+                let _ = print(yaw)
+                 yaw -= 20
+                     
+                //    if yaw <= -90 {
+                //      yaw += 180
+                //    }
+                //    if yaw >= 90 {
+                //      yaw -= 180
+                //    }
+                     
+                 if(yaw >= 25 && yaw <= 155) {
+                  self.catHandModel.updateDirection(direction: CatHandDirection.left)
+                 } else if (yaw <= -25 && yaw >= -125) {
+                  self.catHandModel.updateDirection(direction: CatHandDirection.right)
+                 } else {
+                  self.catHandModel.updateDirection(direction: CatHandDirection.center)
+                 }
+                
+                var isAttack = motionManager.isAttack;
+        
+                self.catHandModel.updateIsAttack(isAttack: (isAttack ?? false))
+
+                catHandModel.updateIsAttacking(isAttacking: false)
+            } else {
+                //加速度が重力以外なさそうだったらfalseにする
+            }
         }
+        
+//        var isAttack = motionManager.isAttack;
+//        
+//        self.catHandModel.updateIsAttack(isAttack: (isAttack ?? false))
+//            
+//        if isAttack == false {
+//            return
+//        }
        //
-       var yaw = (deviceMotionData?.attitude.yaw ?? 90) * 180 / Double.pi
-       let _ = print(yaw)
-       yaw -= 20
-            
-       //    if yaw <= -90 {
-       //      yaw += 180
-       //    }
-       //    if yaw >= 90 {
-       //      yaw -= 180
-       //    }
-            
-       if(yaw >= 30 && yaw <= 150) {
-         self.catHandModel.updateDirection(direction: CatHandDirection.left)
-       } else if (yaw <= -30 && yaw >= -150) {
-         self.catHandModel.updateDirection(direction: CatHandDirection.right)
-       } else {
-         self.catHandModel.updateDirection(direction: CatHandDirection.center)
-       }
+               
+        catHandModel.updatePreviousZ(previousZ: accelerometerData?.acceleration.z ?? 0)
     }
 }
 

@@ -58,16 +58,28 @@ struct ChuruModel {
 }
 
 struct CatHandModel {
+    var isAttacking: Bool
     var isAttack: Bool
+    var previousZ: CGFloat
     var direction: CatHandDirection
     
     init(position: CatHandDirection = .center) {
+        self.isAttacking = false
         self.isAttack = false
+        self.previousZ = 0
         self.direction = position
     }
     
+    mutating func updateIsAttacking(isAttacking: Bool) {
+        self.isAttacking = isAttacking
+    }
+
     mutating func updateIsAttack(isAttack: Bool) {
         self.isAttack = isAttack
+    }
+    
+    mutating func updatePreviousZ(previousZ: CGFloat) {
+        self.previousZ = previousZ
     }
     
     mutating func updateDirection(direction: CatHandDirection) {

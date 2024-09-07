@@ -13,6 +13,7 @@ final class MotionManager: ObservableObject {
     /// 正であれば、上 → 下。
     /// 負であれば、下 → 上。
     @Published private var previousZ: CGFloat?
+    @Published var isAttacking: Bool?
     @Published var isAttack: Bool? //攻撃したかどうかか
     @Published var direction: CatHandDirection?
     @Published var errorMessage: String?
@@ -41,20 +42,31 @@ final class MotionManager: ObservableObject {
             // MARK: 猫パンチ判定
             // 調整可能な閾値。デバイスを振ったと見なす加速度の値。
             let yThreshold: Double = 1.5
-            let zThreshold: Double = 1.2
-
-            if
-//                (fabs(data.acceleration.y) > yThreshold || fabs(data.acceleration.z) > zThreshold),
-                (fabs(data.acceleration.z) > zThreshold),
-                let previousZ = self.previousZ,
-                previousZ > 0 && data.acceleration.z < 0 {
-                self.isAttack = true
-//                self.direction = CatHandDirection.calcDirection(roll: data.acceleration.x)
-//                print(self.direction?.rawValue)
-            } else {
-                self.isAttack = false
-                self.direction = nil
+            let zThreshold: Double = 0.05
+            
+            if isAttacking == true {
+                
             }
+            
+            if previousZ ?? 0 > 0 && data.acceleration.z < 0 {
+                print("Previous", previousZ, data.acceleration.z)
+            }
+            
+            if isAttacking == false {
+                if
+    //                (fabs(data.acceleration.y) > yThreshold || fabs(data.acceleration.z) > zThreshold),
+                    (fabs(data.acceleration.z) > zThreshold),
+                    let previousZ = self.previousZ,
+                    previousZ > 0 && data.acceleration.z < 0 {
+                    self.isAttacking = true
+    //                self.direction = CatHandDirection.calcDirection(roll: data.acceleration.x)
+    //                print(self.direction?.rawValue)
+                } else {
+                    self.isAttacking = false
+                    self.direction = nil
+                }
+            }
+           
             self.previousZ = data.acceleration.z
         }
     }
