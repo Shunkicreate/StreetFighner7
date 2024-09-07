@@ -6,8 +6,10 @@ struct User: Identifiable {
 }
 
 struct CreateRoomView: View {
+    @ObservedObject var rotateScreenModel: RotateScreenModel
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
+    @Environment(\.dismiss) var dismiss
     
     @State private var users: [User] = [
             User(name: "User1"),
@@ -60,7 +62,7 @@ struct CreateRoomView: View {
                             }
                         }
                     }
-                    NavigationLink(destination: AttackView(path: $path, isFromResult: $isFromResult)) {
+                    NavigationLink(destination: AttackView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult)) {
                         Text("たたかう")
                             .font(Font.custom("Mimi_font-Regular", size: 24))
                             .padding()
@@ -74,8 +76,19 @@ struct CreateRoomView: View {
 
                 }
                 .padding()
-                .navigationBarBackButtonHidden(true)
             }
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: backButton)
+    }
+    
+    var backButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Text("もどる")
+                .font(Font.custom("Mimi_font-Regular", size: 30))
+                .foregroundStyle(.black)
         }
     }
 }
@@ -83,5 +96,5 @@ struct CreateRoomView: View {
 #Preview {
     @State var path = NavigationPath()
     @State var isFromResult = false
-    return CreateRoomView(path: $path, isFromResult: $isFromResult)
+    return CreateRoomView(rotateScreenModel: .init(), path: $path, isFromResult: $isFromResult)
 }

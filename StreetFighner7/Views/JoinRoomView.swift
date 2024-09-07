@@ -1,11 +1,13 @@
 import SwiftUI
 
 struct JoinRoomView: View {
+    @ObservedObject var rotateScreenModel: RotateScreenModel
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
     
     @State private var users: [User] = [] // 初期状態は空のリスト
     @State private var selectedUser: User? = nil
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
@@ -37,7 +39,7 @@ struct JoinRoomView: View {
                     
                     Spacer()
 
-                    NavigationLink(destination: DefenseView(path: $path, isFromResult: $isFromResult)) {
+                    NavigationLink(destination: DefenseView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult)) {
                         Text("たたかう")
                             .font(Font.custom("Mimi_font-Regular", size: 24))
                             .padding()
@@ -66,8 +68,19 @@ struct JoinRoomView: View {
                     Spacer()
                 }
                 .padding()
-                .navigationBarBackButtonHidden(true)
             }
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: backButton)
+    }
+    
+    var backButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Text("もどる")
+                .font(Font.custom("Mimi_font-Regular", size: 30))
+                .foregroundStyle(.black)
         }
     }
 }
@@ -75,5 +88,5 @@ struct JoinRoomView: View {
 #Preview {
     @State var path = NavigationPath()
     @State var isFromResult = false
-    return JoinRoomView(path: $path, isFromResult: $isFromResult)
+    return JoinRoomView(rotateScreenModel: .init(), path: $path, isFromResult: $isFromResult)
 }

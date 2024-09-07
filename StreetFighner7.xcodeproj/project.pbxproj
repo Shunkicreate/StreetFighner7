@@ -16,7 +16,7 @@
 		9EEFCA352C8C49FD00CDE604 /* Mimi_font-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */; };
 		9EEFCA382C8C7CC600CDE604 /* UIViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA372C8C7CC600CDE604 /* UIViewControllerWrapper.swift */; };
 		9EEFCA3A2C8C7CE300CDE604 /* PortraitHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA392C8C7CE300CDE604 /* PortraitHostingController.swift */; };
-		9EEFCA3C2C8C7FE000CDE604 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA3B2C8C7FE000CDE604 /* ContentViewModel.swift */; };
+		9EEFCA3C2C8C7FE000CDE604 /* RotateScreenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA3B2C8C7FE000CDE604 /* RotateScreenModel.swift */; };
 		AB466FC22C8C2DDA00CA5B06 /* StreetFighner7App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FC12C8C2DDA00CA5B06 /* StreetFighner7App.swift */; };
 		AB466FC42C8C2DDA00CA5B06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FC32C8C2DDA00CA5B06 /* ContentView.swift */; };
 		AB466FC62C8C2DDB00CA5B06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB466FC52C8C2DDB00CA5B06 /* Assets.xcassets */; };
@@ -28,6 +28,7 @@
 		AB4670002C8C3B0500CA5B06 /* JoinRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FF92C8C3B0500CA5B06 /* JoinRoomView.swift */; };
 		AB4670012C8C3B0500CA5B06 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FFA2C8C3B0500CA5B06 /* ResultView.swift */; };
 		AB4670022C8C3B0500CA5B06 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FFB2C8C3B0500CA5B06 /* TitleView.swift */; };
+		AB46700C2C8C889700CA5B06 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB46700B2C8C889700CA5B06 /* MotionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +42,7 @@
 		9EEFCA362C8C4A8600CDE604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9EEFCA372C8C7CC600CDE604 /* UIViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerWrapper.swift; sourceTree = "<group>"; };
 		9EEFCA392C8C7CE300CDE604 /* PortraitHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitHostingController.swift; sourceTree = "<group>"; };
-		9EEFCA3B2C8C7FE000CDE604 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		9EEFCA3B2C8C7FE000CDE604 /* RotateScreenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotateScreenModel.swift; sourceTree = "<group>"; };
 		AB466FBE2C8C2DDA00CA5B06 /* StreetFighner7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreetFighner7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB466FC12C8C2DDA00CA5B06 /* StreetFighner7App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetFighner7App.swift; sourceTree = "<group>"; };
 		AB466FC32C8C2DDA00CA5B06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +55,7 @@
 		AB466FF92C8C3B0500CA5B06 /* JoinRoomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinRoomView.swift; sourceTree = "<group>"; };
 		AB466FFA2C8C3B0500CA5B06 /* ResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		AB466FFB2C8C3B0500CA5B06 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		AB46700B2C8C889700CA5B06 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				0FAD42052C8C453B00C76A9C /* NekonoteState.swift */,
-				9EEFCA3B2C8C7FE000CDE604 /* ContentViewModel.swift */,
+				9EEFCA3B2C8C7FE000CDE604 /* RotateScreenModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				0F1C5D092C8C8718001B78CE /* Resources */,
+				AB4670082C8C885E00CA5B06 /* Managers */,
 				0FAD42042C8C452400C76A9C /* Models */,
 				9EEFCA362C8C4A8600CDE604 /* Info.plist */,
 				9EEFCA332C8C3DB900CDE604 /* Fonts */,
@@ -150,6 +153,14 @@
 				AB466FFB2C8C3B0500CA5B06 /* TitleView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AB4670082C8C885E00CA5B06 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				AB46700B2C8C889700CA5B06 /* MotionManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,13 +239,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FAD42062C8C453B00C76A9C /* NekonoteState.swift in Sources */,
-				9EEFCA3C2C8C7FE000CDE604 /* ContentViewModel.swift in Sources */,
+				9EEFCA3C2C8C7FE000CDE604 /* RotateScreenModel.swift in Sources */,
 				AB466FD02C8C34DC00CA5B06 /* AppDelegate.swift in Sources */,
 				AB466FFF2C8C3B0500CA5B06 /* DefenseView.swift in Sources */,
 				9EEFCA382C8C7CC600CDE604 /* UIViewControllerWrapper.swift in Sources */,
 				0F1C5D0D2C8C8B2A001B78CE /* SoundManager.swift in Sources */,
 				AB4670002C8C3B0500CA5B06 /* JoinRoomView.swift in Sources */,
 				AB4670012C8C3B0500CA5B06 /* ResultView.swift in Sources */,
+				AB46700C2C8C889700CA5B06 /* MotionManager.swift in Sources */,
 				AB466FC42C8C2DDA00CA5B06 /* ContentView.swift in Sources */,
 				AB466FFE2C8C3B0500CA5B06 /* CreateRoomView.swift in Sources */,
 				AB466FFD2C8C3B0500CA5B06 /* AttackView.swift in Sources */,

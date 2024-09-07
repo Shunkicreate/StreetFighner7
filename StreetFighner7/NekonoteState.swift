@@ -27,3 +27,21 @@ struct NekonoteModel {
         self.isAttacked = isAttacked
     }
 }
+
+enum CatHandDirection: String {
+    case centr = "真ん中"
+    case left = "左"
+    case right = "右"
+}
+
+extension CatHandDirection {
+    static func calcDirection(x: CGFloat) -> Self {
+        if x > 0.5 {
+            return .right
+        } else if x < -0.5 {
+            return .left
+        } else {
+            return .centr
+        }
+    }
+}
