@@ -40,9 +40,9 @@ struct PunchTestView: View {
                     Text("ポーズセンサー停止")
                 })
                 Text("ポーズ")
-                Text("x: \(motionManager.deviceMotionData?.attitude.roll ?? 0)")
-                Text("y: \(motionManager.deviceMotionData?.attitude.pitch ?? 0)")
-                Text("z: \(motionManager.deviceMotionData?.attitude.yaw ?? 0)")
+                Text("x: \((motionManager.deviceMotionData?.attitude.roll ?? 0) * 180 / M_PI ?? 0)")
+                Text("y: \((motionManager.deviceMotionData?.attitude.pitch ?? 0) * 180 / M_PI ?? 0)")
+                Text("z: \((motionManager.deviceMotionData?.attitude.yaw ?? 0) * 180 / M_PI ?? 0)")
                 
                 Text("向き")
                 

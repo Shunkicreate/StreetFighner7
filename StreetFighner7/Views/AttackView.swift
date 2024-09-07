@@ -5,6 +5,9 @@ struct AttackView: View {
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
     
+    @StateObject private var motionManager = MotionManager()
+    @State private var CatHandModel = (isAttack: false, position: CatHandDirection.center)
+    
     var body: some View {
         VStack {
             Text("Attack Screen")
@@ -27,6 +30,15 @@ struct AttackView: View {
         .onDisappear {
             rotateScreenModel.rotateScreen(orientation: .landscapeLeft)
         }
+        .onChange(of: motionManager.accelerometerData) { _ in
+            updateCatHandModel() // 加速度データが変わるたびに状態を更新
+        }
+    }
+    
+    private func updateCatHandModel() {
+        var isAttack = motionManager.isAttack;
+        var deviceMotionData = motionManager.deviceMotionData
+        
     }
 }
 

@@ -13,6 +13,7 @@ final class MotionManager: ObservableObject {
     /// 正であれば、上 → 下。
     /// 負であれば、下 → 上。
     @Published private var previousZ: CGFloat?
+    @Published var isAttack: Bool? //攻撃したかどうかか
     @Published var direction: CatHandDirection?
     @Published var errorMessage: String?
     
@@ -42,13 +43,15 @@ final class MotionManager: ObservableObject {
             let yThreshold: Double = 1.5
             let zThreshold: Double = 3.5
 
-            if
+            if 
                 (fabs(data.acceleration.y) > yThreshold || fabs(data.acceleration.z) > zThreshold),
                 let previousZ = self.previousZ,
                 previousZ > 0 {
-                self.direction = CatHandDirection.calcDirection(roll: data.acceleration.x)
-                print(self.direction?.rawValue)
+                self.isAttack = true
+//                self.direction = CatHandDirection.calcDirection(roll: data.acceleration.x)
+//                print(self.direction?.rawValue)
             } else {
+                self.isAttack = false
                 self.direction = nil
             }
             self.previousZ = data.acceleration.z
