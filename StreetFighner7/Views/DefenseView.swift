@@ -6,9 +6,12 @@ struct DefenseView: View {
     @StateObject private var resultScore = ResultScore()
     @ObservedObject var rotateScreenModel: RotateScreenModel
     @ObservedObject var joinRoomViewModel: JoinRoomViewModel
+    @StateObject private var gameCountdownModel = GameCountdownModel()
     @State private var gameModel = NekonoteModel(state: .center)
     @State private var churuModel = ChuruModel(position: .center)
     @State private var audioPlayer: AVAudioPlayer?
+    @State private var countdown: Int = 15
+    @State private var showResultButton = false
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
     
@@ -33,10 +36,8 @@ struct DefenseView: View {
                                 0
                             case .right:
                                 geometry.size.width / 3
-                            case .paused:
-                                fatalError("未実装")
-                            case .gameOver:
-                                fatalError("未実装")
+                            case .paused, .gameOver:
+                                0
                             }
                         }(),
                         y: gameModel.isAttacked ? 0 : -geometry.size.height * 1.05
@@ -50,9 +51,45 @@ struct DefenseView: View {
                     .scaledToFill()
                     .ignoresSafeArea()
             }
+            .overlay(alignment: .topLeading) {
+                Text("残り時間: \(countdown)秒")
+                    .font(Font.custom("Mimi_font-Regular", size: 24))
+                    .foregroundColor(.white)
+                    .padding()
+            }
+            if showResultButton {
+                VStack {
+                    NavigationLink(destination: ResultView(
+                        rotateScreenModel: rotateScreenModel,
+                        path: $path,
+                        isFromResult: $isFromResult,
+                        resultScore: resultScore
+                    )) {
+                        Text("結果画面へいく")
+                            .font(Font.custom("Mimi_font-Regular", size: 24))
+                            .padding()
+                            .accentColor(Color.white)
+                            .frame(width: 250, height: 65)
+                            .background(Color.black)
+                            .cornerRadius(.infinity)
+                    }
+                }
+                .transition(.opacity) // フェードインのようなアニメーションを追加可能
+            }
         }
         .onAppear {
             motionManager.startAccelerometer(interval: 0.1)
+
+            // 1秒遅れてカウントダウンを開始
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                gameCountdownModel.observeCountdown(timeLimit: 15) { remainingTime in
+                    countdown = remainingTime
+                } completion: {
+                    withAnimation {
+                        showResultButton = true
+                    }
+                }
+            }
         }
         .onDisappear {
             motionManager.stopAccelerometer()
