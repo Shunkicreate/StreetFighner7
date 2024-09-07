@@ -1,17 +1,11 @@
 import SwiftUI
 
-struct User: Identifiable {
-    let id = UUID()
-    let name: String
-}
-
 struct CreateRoomView: View {
     @ObservedObject var rotateScreenModel: RotateScreenModel
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel = CreateRoomViewModel()
-    @State var isPleaseWaitAlertActive: Bool = false
     @State private var isNavigationActive = false
     
     var body: some View {
@@ -50,11 +44,6 @@ struct CreateRoomView: View {
                     }
                 }
                 Button(action:{
-                    // 条件をチェックして、遷移を許可するかを決定
-                    if (!viewModel.isParticipantsJoined()) {
-                        isPleaseWaitAlertActive = true
-                        return
-                    }
                     viewModel.join()
                     isNavigationActive = true
                 }) {
@@ -62,20 +51,12 @@ struct CreateRoomView: View {
                         .font(Font.custom("Mimi_font-Regular", size: 24))
                         .padding()
                         .frame(width: 250, height: 65)
-                        .background(viewModel.selectedPeer == nil ? Color.gray : Color.black) // Change background to gray if disabled
-                        .foregroundColor(viewModel.selectedPeer == nil ? Color.black : Color.white) // Change text color to black if disabled
+                        .background(viewModel.sessionState != .connected ? Color.gray : Color.black)
+                        .foregroundColor(viewModel.sessionState != .connected ? Color.black : Color.white)
                         .cornerRadius(.infinity)
                 }
-                .disabled(viewModel.selectedPeer == nil) // Disable button if no user is selected
+                .disabled(viewModel.sessionState != .connected)
                 .padding(5)
-                .alert(isPresented: $isPleaseWaitAlertActive, content: {
-                    Alert(
-                        title: Text("まだその時ではないニャ"),
-                        dismissButton: .default(Text("OK"), action: {
-                            isPleaseWaitAlertActive = false
-                        })
-                    )
-                })
                 NavigationLink(destination: AttackView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult), isActive: $isNavigationActive) {
                     EmptyView()
                 }
