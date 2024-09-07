@@ -75,8 +75,27 @@ struct ResultView: View {
                     .cornerRadius(10)
             }
             .padding()
+
+            Spacer()
+
+            // タイトル画面に戻るボタン
+            NavigationLink("Back to Title", destination: TitleView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
+                .onTapGesture {
+                    isFromResult = true // 遷移元がResultであることを設定
+                }
+                .padding()
+                .background(Color.gray.opacity(colorOpacity))
+                .foregroundColor(.black)
+                .cornerRadius(10)
         }
         .navigationBarBackButtonHidden(true)
+        .padding()
+        .background {
+            Image("background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+        }
     }
 }
 
