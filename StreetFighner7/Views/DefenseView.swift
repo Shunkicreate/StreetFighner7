@@ -3,6 +3,7 @@ import SwiftUI
 struct DefenseView: View {
     @ObservedObject var rotateScreenModel: RotateScreenModel
     @State private var gameModel = NekonoteModel(state: .center)
+    @State private var churuModel = ChuruModel(position: .center) // ChuruModelを使用
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
     @StateObject private var motionManager = MotionManager() // MotionManagerを使用
@@ -15,33 +16,58 @@ struct DefenseView: View {
                     .scaledToFill()
                     .ignoresSafeArea()
                 
-                // Nekonote状態に応じた画像の表示
-                ZStack {
-                    if gameModel.state == .left {
-                        Image("nekonote_reverse")
-                            .resizable()
-                            .scaledToFit()
-                            .position(x: geometry.size.width * 0.2, y: geometry.size.height * 0.3)
-                    } else if gameModel.state == .center {
-                        Image("nekonote_reverse")
-                            .resizable()
-                            .scaledToFit()
-                            .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.3)
-                    } else if gameModel.state == .right {
-                        Image("nekonote_reverse")
-                            .resizable()
-                            .scaledToFit()
-                            .position(x: geometry.size.width * 0.8, y: geometry.size.height * 0.3)
+                // Nekonote状態とChuru状態の表示
+                VStack {
+                    ZStack {
+                        if gameModel.state == .left {
+                            Image("nekonote_reverse")
+                                .resizable()
+                                .scaledToFit()
+                                .position(x: geometry.size.width * 0.2, y: geometry.size.height * 0.4)
+                        } else if gameModel.state == .center {
+                            Image("nekonote_reverse")
+                                .resizable()
+                                .scaledToFit()
+                                .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.4)
+                        } else if gameModel.state == .right {
+                            Image("nekonote_reverse")
+                                .resizable()
+                                .scaledToFit()
+                                .position(x: geometry.size.width * 0.8, y: geometry.size.height * 0.4)
+                        }
+                        
+                        // アタック時のオーバーレイ
+                        if gameModel.isAttacked {
+                            ZStack {
+                                Image("concentration_line")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .opacity(0.5) // 半透明にして重ね合わせる
+                                    .ignoresSafeArea()
+                            }
+                        }
                     }
                     
-                    // アタック時のオーバーレイ
-                    if gameModel.isAttacked {
-                        ZStack {
-                            Image("concentration_line")
+                    // Churuの表示
+                    ZStack {
+                        if churuModel.position == .left {
+                            Image("churu_fukuro")
                                 .resizable()
-                                .scaledToFill()
-                                .opacity(0.5) // 半透明にして重ね合わせる
-                                .ignoresSafeArea()
+                                .scaledToFit()
+                                .frame(width: 150, height: 150)
+                                .position(x: geometry.size.width * 0.2, y: geometry.size.height * 0.2)
+                        } else if churuModel.position == .center {
+                            Image("churu_fukuro")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 150, height: 150)
+                                .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.2)
+                        } else if churuModel.position == .right {
+                            Image("churu_fukuro")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 150, height: 150)
+                                .position(x: geometry.size.width * 0.8, y: geometry.size.height * 0.2)
                         }
                     }
                 }
@@ -82,16 +108,16 @@ struct DefenseView: View {
         }
     }
     
-    // 加速度データに基づいて NekonoteModel の state を更新
+    // 加速度データに基づいて NekonoteModel の state と ChuruModel の position を更新
     private func updateGameModelState() {
         guard let y = motionManager.accelerometerData?.acceleration.y else { return }
         
         if y > 0.5 {
-            gameModel.state = .right
+            churuModel.updatePosition(x: 1.0) // ChuruModelも更新
         } else if y < -0.5 {
-            gameModel.state = .left
+            churuModel.updatePosition(x: -1.0) // ChuruModelも更新
         } else {
-            gameModel.state = .center
+            churuModel.updatePosition(x: 0.0) // ChuruModelも更新
         }
     }
 
@@ -102,4 +128,22 @@ struct DefenseView: View {
             gameModel.isAttacked = false
         }
     }
+}
+
+
+// プレビュー用のラッパービュー
+struct DefenseViewPreviewWrapper: View {
+    @State private var path = NavigationPath()
+    @State private var isFromResult = false
+    
+    var body: some View {
+        DefenseView(
+            path: $path,
+            isFromResult: $isFromResult
+        )
+    }
+}
+
+#Preview {
+    DefenseViewPreviewWrapper()
 }
