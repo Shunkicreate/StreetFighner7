@@ -15,7 +15,7 @@ struct TitleView: View {
                 Text("ねこぱんち")
                     .font(Font.custom("Mimi_font-Regular", size: 96))
                 
-                NavigationLink(destination: CreateRoomView(path: $path, isFromResult: $isFromResult)) {
+                NavigationLink(destination: CreateRoomView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult)) {
                     Text("へやをつくる")
                         .font(Font.custom("Mimi_font-Regular", size: 24))
                         .padding()
@@ -26,7 +26,7 @@ struct TitleView: View {
                 }
                 .padding(10)
                 
-                NavigationLink(destination: JoinRoomView(path: $path, isFromResult: $isFromResult)) {
+                NavigationLink(destination: JoinRoomView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult)) {
                     Text("へやにはいる")
                         .font(Font.custom("Mimi_font-Regular", size: 24))
                         .padding()

@@ -67,7 +67,7 @@ extension CatHandDirection {
         } else if roll < -0.5 {
             return .left
         } else {
-            return .centr
+            return .center
         }
     }
 }
