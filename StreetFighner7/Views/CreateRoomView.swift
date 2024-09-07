@@ -9,6 +9,7 @@ struct CreateRoomView: View {
     @ObservedObject var rotateScreenModel: RotateScreenModel
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
+    @Environment(\.dismiss) var dismiss
     
     @State private var users: [User] = [
             User(name: "User1"),
@@ -75,8 +76,19 @@ struct CreateRoomView: View {
 
                 }
                 .padding()
-                .navigationBarBackButtonHidden(true)
             }
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: backButton)
+    }
+    
+    var backButton: some View {
+        Button {
+            dismiss()
+        } label: {
+            Text("もどる")
+                .font(Font.custom("Mimi_font-Regular", size: 24))
+                .foregroundStyle(.black)
         }
     }
 }
