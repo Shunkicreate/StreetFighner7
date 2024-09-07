@@ -77,6 +77,7 @@ struct AttackView: View {
         var deviceMotionData = motionManager.deviceMotionData
         
         if catHandModel.isAttacking == false {
+            catHandModel.isAttack = false;
             if
                 (fabs(catHandModel.previousZ ?? 0) > zThreshold),
                 catHandModel.previousZ ?? 0 > 0 && accelerometerData?.acceleration.z ?? 0 < 0 {
