@@ -34,6 +34,7 @@
 		B7DF60FA2C8CE010000D428F /* PermissionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DF60F92C8CE010000D428F /* PermissionRequest.swift */; };
 		B7DF60FC2C8CE02F000D428F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DF60FB2C8CE02F000D428F /* Message.swift */; };
 		E40823D52C8CB0F2001A4BA9 /* GameCountdownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40823D42C8CB0F2001A4BA9 /* GameCountdownModel.swift */; };
+		E40823D82C8CE125001A4BA9 /* JoinRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40823D72C8CE125001A4BA9 /* JoinRoomViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		B7DF60F92C8CE010000D428F /* PermissionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionRequest.swift; sourceTree = "<group>"; };
 		B7DF60FB2C8CE02F000D428F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E40823D42C8CB0F2001A4BA9 /* GameCountdownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCountdownModel.swift; sourceTree = "<group>"; };
+		E40823D72C8CE125001A4BA9 /* JoinRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		AB466FC02C8C2DDA00CA5B06 /* StreetFighner7 */ = {
 			isa = PBXGroup;
 			children = (
+				E40823D62C8CE118001A4BA9 /* ViewModels */,
 				9EEFCA482C8CA08C00CDE604 /* Models */,
 				9EEFCA452C8CA08C00CDE604 /* Resources */,
 				AB4670082C8C885E00CA5B06 /* Managers */,
@@ -176,6 +179,14 @@
 				AB2332EB2C8CCE9E00A33BCB /* VibrationManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		E40823D62C8CE118001A4BA9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				E40823D72C8CE125001A4BA9 /* JoinRoomViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +280,7 @@
 				9EEFCA4D2C8CA08C00CDE604 /* NekonoteState.swift in Sources */,
 				AB466FFD2C8C3B0500CA5B06 /* AttackView.swift in Sources */,
 				E40823D52C8CB0F2001A4BA9 /* GameCountdownModel.swift in Sources */,
+				E40823D82C8CE125001A4BA9 /* JoinRoomViewModel.swift in Sources */,
 				B7DF60FA2C8CE010000D428F /* PermissionRequest.swift in Sources */,
 				B7DF60FC2C8CE02F000D428F /* Message.swift in Sources */,
 				AB466FC22C8C2DDA00CA5B06 /* StreetFighner7App.swift in Sources */,

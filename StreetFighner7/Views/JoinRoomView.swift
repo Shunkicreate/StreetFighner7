@@ -1,12 +1,13 @@
 import SwiftUI
+import MultipeerConnectivity
 
 struct JoinRoomView: View {
+    @StateObject var joinRoomViewModel = JoinRoomViewModel()
     @ObservedObject var rotateScreenModel: RotateScreenModel
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
-    
-    @State private var users: [User] = [] // 初期状態は空のリスト
-    @State private var selectedUser: User? = nil
+    /// 対戦相手の情報
+    @State private var joinedPeer: PeerDevice?
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -20,16 +21,17 @@ struct JoinRoomView: View {
                 
                 Spacer()
                 
-                if users.isEmpty {
+                if joinRoomViewModel.joinedPeer.isEmpty {
                     Text("相手をさがしてます")
                         .font(Font.custom("Mimi_font-Regular", size: 24))
                         .padding()
-                } else {
-                    Text("\(selectedUser?.name ?? "ユーザー")さんからしょうたい！")
+                }
+                if let joinedPeer = joinedPeer {
+                    Text(joinedPeer.peerId.displayName)
                         .font(Font.custom("Mimi_font-Regular", size: 24))
                         .padding()
                 }
-                
+
                 Spacer()
 
                 NavigationLink(destination: DefenseView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult)) {
@@ -37,26 +39,12 @@ struct JoinRoomView: View {
                         .font(Font.custom("Mimi_font-Regular", size: 24))
                         .padding()
                         .frame(width: 250, height: 65)
-                        .background(selectedUser == nil ? Color.gray : Color.black)
-                        .foregroundColor(selectedUser == nil ? Color.black : Color.white)
+                        .background(joinedPeer == nil ? Color.gray : Color.black)
+                        .foregroundColor(joinedPeer == nil ? Color.black : Color.white)
                         .cornerRadius(.infinity)
                 }
-                .disabled(selectedUser == nil)
+                .disabled(joinedPeer == nil)
                 .padding(5)
-
-                Spacer()
-                
-                // デバッグ用ボタン
-                Button("デバッグ: ユーザー追加") {
-                    users.append(User(name: "デバッグユーザー"))
-                    selectedUser = users.first
-                }
-                .font(Font.custom("Mimi_font-Regular", size: 18))
-                .padding()
-                .background(Color.orange)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-                .padding(.top, 20)
                 
                 Spacer()
             }
@@ -70,6 +58,22 @@ struct JoinRoomView: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: backButton)
+        .alert(item: $joinRoomViewModel.permissionRequest, content: { request in
+            Alert(
+                title: Text("\(request.peerId.displayName)と対戦しますか？"),
+                primaryButton: .default(Text("はい"), action: {
+                    request.onRequest(true)
+                    joinRoomViewModel.join(peer: PeerDevice(peerId: request.peerId))
+                    guard let joinedPeer = joinRoomViewModel.joinedPeer.first else {
+                        return
+                    }
+                    self.joinedPeer = joinedPeer
+                }),
+                secondaryButton: .cancel(Text("いいえ"), action: {
+                    request.onRequest(false)
+                })
+            )
+        })
     }
     
     var backButton: some View {
