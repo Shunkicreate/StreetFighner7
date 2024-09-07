@@ -5,6 +5,7 @@ struct DefenseView: View {
     @StateObject private var motionManager = MotionManager()
     @StateObject private var resultScore = ResultScore()
     @ObservedObject var rotateScreenModel: RotateScreenModel
+    @ObservedObject var joinRoomViewModel: JoinRoomViewModel
     @StateObject private var gameCountdownModel = GameCountdownModel()
     @State private var gameModel = NekonoteModel(state: .center)
     @State private var churuModel = ChuruModel(position: .center)
@@ -44,35 +45,6 @@ struct DefenseView: View {
             }
             .navigationBarBackButtonHidden(true)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .overlay(alignment: .bottom, content: {
-                // TODO: 削除(デバッグ用)
-                #if DEBUG
-                HStack {
-                    Button("Left") {
-                        handleAttack()
-                        gameModel.state = .left
-                    }.foregroundStyle(.red)
-                    Button("Center") {
-                        handleAttack()
-                        gameModel.state = .center
-                    }.foregroundStyle(.blue)
-                    Button("Right") {
-                        handleAttack()
-                        gameModel.state = .right
-                    }.foregroundStyle(.red)
-                    NavigationLink(
-                        "Go to Result",
-                        destination: ResultView(
-                            rotateScreenModel: rotateScreenModel,
-                            path: $path,
-                            isFromResult: $isFromResult,
-                            resultScore: resultScore
-                        )
-                    )
-                }
-                .padding()
-                #endif
-            })
             .background {
                 Image("background")
                     .resizable()
@@ -124,6 +96,20 @@ struct DefenseView: View {
         }
         .onChange(of: motionManager.accelerometerData) {
             updateGameModelState()
+        }
+        .onChange(of: joinRoomViewModel.messages) {
+            if joinRoomViewModel.messages.last?.type == .attackCenter {
+                handleAttack()
+                gameModel.state = .center
+            } else if joinRoomViewModel.messages.last?.type == .attackLeft {
+                handleAttack()
+                gameModel.state = .left
+            } else if joinRoomViewModel.messages.last?.type == .attackRight {
+                handleAttack()
+                gameModel.state = .right
+            } else {
+                fatalError("未実装")
+            }
         }
     }
     
@@ -178,7 +164,8 @@ struct DefenseView: View {
     @State var path = NavigationPath()
     @State var isFromResult = false
     return DefenseView(
-        rotateScreenModel: .init(),
+        rotateScreenModel: .init(), 
+        joinRoomViewModel: .init(),
         path: $path,
         isFromResult: $isFromResult
     )

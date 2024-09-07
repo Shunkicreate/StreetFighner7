@@ -8,6 +8,7 @@ struct AttackView: View {
     @StateObject private var motionManager = MotionManager()
     @StateObject private var gameCountdownModel = GameCountdownModel()
     @State private var catHandModel = CatHandModel(position: CatHandDirection.center)
+    @ObservedObject var createRoomViewModel: CreateRoomViewModel
     @State private var countdown: Int = 15
     @State private var showResultButton = false
     
@@ -106,6 +107,22 @@ struct AttackView: View {
         .onChange(of: motionManager.accelerometerData) { _ in
             updateCatHandModel() // 加速度データが変わるたびに状態を更新
         }
+        .onChange(of: catHandModel.isAttack) {
+            if catHandModel.isAttack {
+                print("👺:", catHandModel.direction)
+                switch catHandModel.direction {
+                case .center:
+                    print("真ん中送信")
+                    createRoomViewModel.send(message: .init(type: .attackCenter, message: ""))
+                case .left:
+                    print("左送信")
+                    createRoomViewModel.send(message: .init(type: .attackLeft, message: ""))
+                case .right:
+                    print("右送信")
+                    createRoomViewModel.send(message: .init(type: .attackRight, message: ""))
+                }
+            }
+        }
     }
     
     private func updateCatHandModel() {
@@ -144,10 +161,10 @@ struct AttackView: View {
                  } else {
                   self.catHandModel.updateDirection(direction: CatHandDirection.center)
                  }
+
+                catHandModel.isAttack = true
                 
-                var isAttack = motionManager.isAttack;
-        
-                self.catHandModel.updateIsAttack(isAttack: (isAttack ?? false))
+                self.catHandModel.updateIsAttack(isAttack: catHandModel.isAttack)
 
                 catHandModel.updateIsAttacking(isAttacking: false)
             } else {
@@ -172,6 +189,6 @@ struct AttackView: View {
     @State var path = NavigationPath()
     @State var isFromResult = false
     return NavigationStack(path: $path) {
-        AttackView(rotateScreenModel: .init(), path: $path, isFromResult: $isFromResult)
+        AttackView(rotateScreenModel: .init(), path: $path, isFromResult: $isFromResult, createRoomViewModel: .init())
     }
 }
