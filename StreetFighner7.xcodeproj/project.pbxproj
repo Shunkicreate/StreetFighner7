@@ -21,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mimi_font-Regular.ttf"; sourceTree = "<group>"; };
 		AB466FBE2C8C2DDA00CA5B06 /* StreetFighner7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreetFighner7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB466FC12C8C2DDA00CA5B06 /* StreetFighner7App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetFighner7App.swift; sourceTree = "<group>"; };
 		AB466FC32C8C2DDA00CA5B06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9EEFCA332C8C3DB900CDE604 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		AB466FB52C8C2DD900CA5B06 = {
 			isa = PBXGroup;
 			children = (
@@ -65,6 +74,7 @@
 		AB466FC02C8C2DDA00CA5B06 /* StreetFighner7 */ = {
 			isa = PBXGroup;
 			children = (
+				9EEFCA332C8C3DB900CDE604 /* Fonts */,
 				AB466FFC2C8C3B0500CA5B06 /* Views */,
 				AB466FCF2C8C34DC00CA5B06 /* AppDelegate.swift */,
 				AB466FC12C8C2DDA00CA5B06 /* StreetFighner7App.swift */,
