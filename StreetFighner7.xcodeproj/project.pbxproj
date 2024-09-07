@@ -133,7 +133,6 @@
 				AB466FC32C8C2DDA00CA5B06 /* ContentView.swift */,
 				AB466FC52C8C2DDB00CA5B06 /* Assets.xcassets */,
 				AB466FC72C8C2DDB00CA5B06 /* Preview Content */,
-				0F1C5D0C2C8C8B2A001B78CE /* SoundManager.swift */,
 			);
 			path = StreetFighner7;
 			sourceTree = "<group>";
@@ -163,6 +162,7 @@
 		AB4670082C8C885E00CA5B06 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				0F1C5D0C2C8C8B2A001B78CE /* SoundManager.swift */,
 				AB46700B2C8C889700CA5B06 /* MotionManager.swift */,
 				AB2332EB2C8CCE9E00A33BCB /* VibrationManager.swift */,
 			);
