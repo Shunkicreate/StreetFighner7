@@ -27,7 +27,7 @@ struct JoinRoomView: View {
                         .padding()
                 }
                 if let joinedPeer = joinedPeer {
-                    Text(joinedPeer.peerId.displayName)
+                    Text("\(joinedPeer.peerId.displayName)さんからしょうたい！！")
                         .font(Font.custom("Mimi_font-Regular", size: 24))
                         .padding()
                 }
