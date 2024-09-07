@@ -152,20 +152,12 @@ struct DefenseView: View {
     }
 }
 
-
-// プレビュー用のラッパービュー
-struct DefenseViewPreviewWrapper: View {
-    @State private var path = NavigationPath()
-    @State private var isFromResult = false
-    
-    var body: some View {
-        DefenseView(
-            path: $path,
-            isFromResult: $isFromResult
-        )
-    }
-}
-
 #Preview {
-    DefenseViewPreviewWrapper()
+    @State var path = NavigationPath()
+    @State var isFromResult = false
+    return DefenseView(
+        rotateScreenModel: .init(),
+        path: $path,
+        isFromResult: $isFromResult
+    )
 }
