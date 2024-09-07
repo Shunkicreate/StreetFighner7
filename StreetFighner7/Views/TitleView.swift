@@ -29,7 +29,7 @@ struct TitleView: View {
                 }
                 .padding(10)
                 
-                NavigationLink(destination: JoinRoomView(path: $path, isFromResult: $isFromResult)) {
+                NavigationLink(destination: JoinRoomView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult)) {
                     Text("へやにはいる")
                         .font(Font.custom("Mimi_font-Regular", size: 24))
                         .padding()
