@@ -11,6 +11,7 @@ import SwiftUI
 import Combine
 
 class CreateRoomViewModel: NSObject, ObservableObject {
+    @Published var sessionState: MCSessionState = .notConnected
     private let advertiser: MCNearbyServiceAdvertiser
     private let browser: MCNearbyServiceBrowser
     private let session: MCSession
@@ -54,6 +55,16 @@ class CreateRoomViewModel: NSObject, ObservableObject {
             .store(in: &subscriptions)
         
         browser.startBrowsingForPeers()
+        
+        $sessionState
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                if state == .connected {
+                    self?.join()
+                    self?.send(message: Message(type: .ready, message: ""))
+                }
+            }
+            .store(in: &subscriptions)
     }
     
     func finishBrowsing() {
@@ -130,7 +141,7 @@ extension CreateRoomViewModel: MCNearbyServiceAdvertiserDelegate {
 
 extension CreateRoomViewModel: MCSessionDelegate {
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
-        //
+        self.sessionState = state
     }
     
     // sessionを通して送られてくるmessageをViewLogicのmessageReciverに流す
