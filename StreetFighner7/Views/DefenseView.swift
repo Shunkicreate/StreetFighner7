@@ -100,10 +100,10 @@ struct DefenseView: View {
         let soundName = soundNameList[randomIndex]
         SoundManager.shared.playSound(soundName)
 
-        withAnimation(.default, completionCriteria: .logicallyComplete) {
+        withAnimation(.easeInOut(duration: 0.3), completionCriteria: .logicallyComplete) {
             gameModel.isAttacked = true
         } completion: {
-            withAnimation(.default) {
+            withAnimation(.easeInOut(duration: 0.3)) {
                 gameModel.isAttacked = false
             }
         }
