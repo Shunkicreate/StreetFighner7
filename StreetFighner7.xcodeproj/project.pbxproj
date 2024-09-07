@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		0F1C5D0D2C8C8B2A001B78CE /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1C5D0C2C8C8B2A001B78CE /* SoundManager.swift */; };
 		9EEFCA352C8C49FD00CDE604 /* Mimi_font-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */; };
-		9EEFCA382C8C7CC600CDE604 /* UIViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA372C8C7CC600CDE604 /* UIViewControllerWrapper.swift */; };
-		9EEFCA3A2C8C7CE300CDE604 /* PortraitHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA392C8C7CE300CDE604 /* PortraitHostingController.swift */; };
 		9EEFCA3E2C8C86BA00CDE604 /* PunchTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEFCA3D2C8C86BA00CDE604 /* PunchTestView.swift */; };
 		9EEFCA492C8CA08C00CDE604 /* attack_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA412C8CA08C00CDE604 /* attack_1.mp3 */; };
 		9EEFCA4A2C8CA08C00CDE604 /* attack_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA422C8CA08C00CDE604 /* attack_2.mp3 */; };
@@ -36,8 +34,6 @@
 		0F1C5D0C2C8C8B2A001B78CE /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mimi_font-Regular.ttf"; sourceTree = "<group>"; };
 		9EEFCA362C8C4A8600CDE604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		9EEFCA372C8C7CC600CDE604 /* UIViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerWrapper.swift; sourceTree = "<group>"; };
-		9EEFCA392C8C7CE300CDE604 /* PortraitHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitHostingController.swift; sourceTree = "<group>"; };
 		9EEFCA3D2C8C86BA00CDE604 /* PunchTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PunchTestView.swift; sourceTree = "<group>"; };
 		9EEFCA412C8CA08C00CDE604 /* attack_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = attack_1.mp3; sourceTree = "<group>"; };
 		9EEFCA422C8CA08C00CDE604 /* attack_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = attack_2.mp3; sourceTree = "<group>"; };
@@ -146,8 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				AB466FF62C8C3B0500CA5B06 /* AttackView.swift */,
-				9EEFCA372C8C7CC600CDE604 /* UIViewControllerWrapper.swift */,
-				9EEFCA392C8C7CE300CDE604 /* PortraitHostingController.swift */,
 				AB466FF72C8C3B0500CA5B06 /* CreateRoomView.swift */,
 				AB466FF82C8C3B0500CA5B06 /* DefenseView.swift */,
 				AB466FF92C8C3B0500CA5B06 /* JoinRoomView.swift */,
@@ -245,7 +239,6 @@
 				9EEFCA3E2C8C86BA00CDE604 /* PunchTestView.swift in Sources */,
 				9EEFCA4E2C8CA08C00CDE604 /* RotateScreenModel.swift in Sources */,
 				AB466FFF2C8C3B0500CA5B06 /* DefenseView.swift in Sources */,
-				9EEFCA382C8C7CC600CDE604 /* UIViewControllerWrapper.swift in Sources */,
 				0F1C5D0D2C8C8B2A001B78CE /* SoundManager.swift in Sources */,
 				AB4670002C8C3B0500CA5B06 /* JoinRoomView.swift in Sources */,
 				AB4670012C8C3B0500CA5B06 /* ResultView.swift in Sources */,
@@ -256,7 +249,6 @@
 				AB466FFD2C8C3B0500CA5B06 /* AttackView.swift in Sources */,
 				AB466FC22C8C2DDA00CA5B06 /* StreetFighner7App.swift in Sources */,
 				AB4670022C8C3B0500CA5B06 /* TitleView.swift in Sources */,
-				9EEFCA3A2C8C7CE300CDE604 /* PortraitHostingController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
