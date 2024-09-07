@@ -6,6 +6,7 @@ struct User: Identifiable {
 }
 
 struct CreateRoomView: View {
+    @ObservedObject var rotateScreenModel: RotateScreenModel
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
     
@@ -60,7 +61,7 @@ struct CreateRoomView: View {
                             }
                         }
                     }
-                    NavigationLink(destination: AttackView(path: $path, isFromResult: $isFromResult)) {
+                    NavigationLink(destination: AttackView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult)) {
                         Text("たたかう")
                             .font(Font.custom("Mimi_font-Regular", size: 24))
                             .padding()
@@ -83,5 +84,5 @@ struct CreateRoomView: View {
 #Preview {
     @State var path = NavigationPath()
     @State var isFromResult = false
-    return CreateRoomView(path: $path, isFromResult: $isFromResult)
+    return CreateRoomView(rotateScreenModel: .init(), path: $path, isFromResult: $isFromResult)
 }

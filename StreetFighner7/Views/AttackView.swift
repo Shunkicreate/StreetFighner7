@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct AttackView: View {
+    @ObservedObject var rotateScreenModel: RotateScreenModel
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
     
@@ -8,7 +9,7 @@ struct AttackView: View {
         VStack {
             Text("Attack Screen")
                 .font(.largeTitle)
-            NavigationLink(destination: ResultView(path: $path, isFromResult: $isFromResult)) {
+            NavigationLink(destination: ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult)) {
                 Text("り ざ る と")
                     .font(Font.custom("Mimi_font-Regular", size: 24))
                     .padding()
@@ -20,6 +21,12 @@ struct AttackView: View {
         }
         .padding()
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            rotateScreenModel.rotateScreen(orientation: .portrait)
+        }
+        .onDisappear {
+            rotateScreenModel.rotateScreen(orientation: .landscapeLeft)
+        }
     }
 }
 
@@ -27,7 +34,6 @@ struct AttackView: View {
     @State var path = NavigationPath()
     @State var isFromResult = false
     return NavigationStack(path: $path) {
-        PortraitViewControllerWrapper(content: AttackView(path: $path, isFromResult: $isFromResult))
+        AttackView(rotateScreenModel: .init(), path: $path, isFromResult: $isFromResult)
     }
 }
-
