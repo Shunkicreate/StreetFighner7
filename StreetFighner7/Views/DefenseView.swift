@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 struct DefenseView: View {
     @ObservedObject var rotateScreenModel: RotateScreenModel
@@ -6,6 +7,8 @@ struct DefenseView: View {
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
     @StateObject private var motionManager = MotionManager() // MotionManagerを使用
+    
+    @State private var audioPlayer: AVAudioPlayer?
     
     var body: some View {
         GeometryReader { geometry in
@@ -51,6 +54,7 @@ struct DefenseView: View {
                         Button("Left") {
                             handleAttack()
                             gameModel.state = .left
+                            
                         }
                         Button("Center") {
                             handleAttack()
@@ -97,7 +101,25 @@ struct DefenseView: View {
 
     // アタックされたときの処理
     private func handleAttack() {
+        actionAttack()
+    }
+    
+    private func actionAttack() {
+        // サウンドのリストを定義
+        let soundNameList = ["attack_1", "attack_2", "attack_3"]
+        
+        // ランダムなインデックスを生成
+        let randomIndex = Int.random(in: 0..<soundNameList.count)
+        
+        // ランダムに選ばれたサウンド名
+        let soundName = soundNameList[randomIndex]
+        
+        // サウンドを再生
+        SoundManager.shared.playSound(soundName)
+        
+        // アタックされたときの処理
         gameModel.isAttacked = true
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             gameModel.isAttacked = false
         }
