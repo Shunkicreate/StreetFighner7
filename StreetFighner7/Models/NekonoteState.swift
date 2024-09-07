@@ -43,6 +43,24 @@ struct ChuruModel {
     }
 }
 
+struct CatHandModel {
+    var isAttack: Bool
+    var direction: CatHandDirection
+    
+    init(position: CatHandDirection = .center) {
+        self.isAttack = false
+        self.direction = position
+    }
+    
+    mutating func updateIsAttack(isAttack: Bool) {
+        self.isAttack = isAttack
+    }
+    
+    mutating func updateDirection(direction: CatHandDirection) {
+        self.direction = direction
+    }
+}
+
 enum CatHandDirection: String {
     case center
     case left
