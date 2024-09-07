@@ -8,9 +8,26 @@ struct AttackView: View {
         VStack {
             Text("Attack Screen")
                 .font(.largeTitle)
-            NavigationLink("Go to Result", destination: ResultView(path: $path, isFromResult: $isFromResult))
+            NavigationLink(destination: ResultView(path: $path, isFromResult: $isFromResult)) {
+                Text("り ざ る と")
+                    .font(Font.custom("Mimi_font-Regular", size: 24))
+                    .padding()
+                    .accentColor(Color.white)
+                    .frame(width: 250, height: 65)
+                    .background(Color.black)
+                    .cornerRadius(.infinity)
+            }
         }
         .padding()
         .navigationBarBackButtonHidden(true)
     }
 }
+
+#Preview {
+    @State var path = NavigationPath()
+    @State var isFromResult = false
+    return NavigationStack(path: $path) {
+        PortraitViewControllerWrapper(content: AttackView(path: $path, isFromResult: $isFromResult))
+    }
+}
+
