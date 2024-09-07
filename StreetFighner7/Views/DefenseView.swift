@@ -2,6 +2,8 @@ import SwiftUI
 
 struct DefenseView: View {
     @State private var gameModel = NekonoteModel(state: .center)
+    @Binding var path: NavigationPath
+    @Binding var isFromResult: Bool
     
     var body: some View {
         GeometryReader { geometry in
