@@ -6,7 +6,10 @@ struct AttackView: View {
     @Binding var isFromResult: Bool
     @StateObject private var resultScore = ResultScore()
     @StateObject private var motionManager = MotionManager()
+    @StateObject private var gameCountdownModel = GameCountdownModel()
     @State private var catHandModel = CatHandModel(position: CatHandDirection.center)
+    @State private var countdown: Int = 15
+    @State private var showResultButton = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -52,13 +55,48 @@ struct AttackView: View {
                     }
                 }
             }
+            .overlay(alignment: .topLeading) {
+                            Text("残り時間: \(countdown)秒")
+                                .font(Font.custom("Mimi_font-Regular", size: 24))
+                                .foregroundColor(.black)
+                                .padding()
+                        }
+                        if showResultButton {
+                            VStack {
+                                NavigationLink(destination: ResultView(
+                                    rotateScreenModel: rotateScreenModel,
+                                    path: $path,
+                                    isFromResult: $isFromResult,
+                                    resultScore: resultScore
+                                )) {
+                                    Text("結果画面へいく")
+                                        .font(Font.custom("Mimi_font-Regular", size: 24))
+                                        .padding()
+                                        .accentColor(Color.white)
+                                        .frame(width: 250, height: 65)
+                                        .background(Color.black)
+                                        .cornerRadius(.infinity)
+                                }
+                            }
+                            .transition(.opacity) // フェードインのようなアニメーションを追加可能
+                        }
         }
-//        .padding()
-//        .navigationBarBackButtonHidden(true)
+        //        .padding()
+        //        .navigationBarBackButtonHidden(true)
         .onAppear {
             rotateScreenModel.rotateScreen(orientation: .portrait)
             motionManager.startAccelerometer(interval: 0.1)
             motionManager.startDeviceMotion(interval: 0.1)
+            // 1秒遅れてカウントダウンを開始
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                gameCountdownModel.observeCountdown(timeLimit: 15) { remainingTime in
+                    countdown = remainingTime
+                } completion: {
+                    withAnimation {
+                        showResultButton = true
+                    }
+                }
+            }
         }
         .onDisappear {
             rotateScreenModel.rotateScreen(orientation: .landscapeLeft)
