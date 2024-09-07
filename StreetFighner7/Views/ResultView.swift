@@ -7,8 +7,18 @@ struct ResultView: View {
     @ObservedObject var resultScore: ResultScore // ResultScoreを追加
 
     let colorOpacity: Double = 0.6
-
+    // 結果のねこの太り具合を調整
+    let neko_fat_standard_score = 10
+    let neko_fat_standard_level = 5
+    
     var body: some View {
+        // 太り具合の計算
+        let nonlimit_neko_fat_level = Int(ceil(Double(resultScore.totalSuccess) / (Double(neko_fat_standard_score) / Double(neko_fat_standard_level))))
+        let neko_fat_level = max(1, min(nonlimit_neko_fat_level, Int(neko_fat_standard_level)))
+        
+        var neko_fat_image: String {
+            return "neko_ilust_fat_" + String(neko_fat_level)
+        }
         GeometryReader { geometry in
             ZStack {
                 // リザルト画面のコンテンツ
@@ -19,9 +29,9 @@ struct ResultView: View {
                     
                     HStack {
                         // 猫画像
-                        Image("neko_ilust_1").resizable() // Make the image resizable
+                        Image(neko_fat_image).resizable() // Make the image resizable
                             .scaledToFit() // Scale it proportionally
-                            .frame(width: geometry.size.width * 0.4)
+                            .frame(height: geometry.size.height * 0.5)
                             .padding()
                         // 猫の結果
                         VStack(alignment: .leading) {
