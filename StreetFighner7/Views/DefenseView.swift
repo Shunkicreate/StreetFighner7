@@ -106,6 +106,7 @@ struct DefenseView: View {
                             churuModel.position = .right
                             handleAvoid()
                         }
+                        NavigationLink("Go to Result", destination:ResultView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
                     }
                     // 成功と失敗の合計回数を表示
                     VStack {
