@@ -37,7 +37,10 @@ struct ResultView: View {
                             Text("\(resultScore.totalSuccess)個")
                             
                             Text("成功率")
-                            Text("\(Int(Double(resultScore.totalSuccess) / Double(resultScore.totalSuccess + resultScore.totalFailure) * 100))%")
+                            let totalAttempts = resultScore.totalSuccess + resultScore.totalFailure
+                            let successPercentage = totalAttempts > 0 ? Int(Double(resultScore.totalSuccess) / Double(totalAttempts) * 100) : 0
+
+                            Text("\(successPercentage)%")
 
                         }
                         .padding()
