@@ -10,6 +10,9 @@ import Foundation
 enum MessageType: Int, Codable {
     case ready = 0
     case start = 1
+    case attackCenter = 2
+    case attackLeft = 3
+    case attackRight = 4
 }
 
 class Message: Codable, Identifiable, Hashable {

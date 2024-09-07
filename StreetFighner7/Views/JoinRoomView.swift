@@ -36,7 +36,7 @@ struct JoinRoomView: View {
 
                 Spacer()
 
-                NavigationLink(destination: DefenseView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult), isActive: $isNavigationActive) {
+                NavigationLink(destination: DefenseView(rotateScreenModel: rotateScreenModel, joinRoomViewModel: joinRoomViewModel, path: $path, isFromResult: $isFromResult), isActive: $isNavigationActive) {
                     Text(joinRoomViewModel.messages.first(where: {
                         $0.type == .ready
                     })?.type == .ready ? "かいしをまっています！" : "じゅんびちゅう、、、")

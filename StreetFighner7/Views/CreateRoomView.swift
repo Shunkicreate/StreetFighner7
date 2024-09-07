@@ -5,7 +5,7 @@ struct CreateRoomView: View {
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var viewModel = CreateRoomViewModel()
+    @StateObject var createRoomViewModel = CreateRoomViewModel()
     /// 対戦画面への遷移フラグ
     @State private var isNavigationActive = false
     
@@ -16,27 +16,27 @@ struct CreateRoomView: View {
                     .font(Font.custom("Mimi_font-Regular", size: 96))
                 ScrollView {
                     VStack(spacing: 15) {
-                        ForEach(viewModel.peers) { peer in
+                        ForEach(createRoomViewModel.peers) { peer in
                             Button(action: {
-                                viewModel.invite(_selectedPeer: peer)
+                                createRoomViewModel.invite(_selectedPeer: peer)
                             }) {
                                 HStack {
                                     Text(peer.peerId.displayName)
                                         .font(Font.custom("Mimi_font-Regular", size: 18)) // Reduce the font size
                                         .padding(.vertical, 10) // Adjust vertical padding to make buttons smaller
                                         .padding(.horizontal, 15) // Adjust horizontal padding
-                                        .foregroundColor(viewModel.selectedPeer?.peerId == peer.peerId ? .white : .black)
+                                        .foregroundColor(createRoomViewModel.selectedPeer?.peerId == peer.peerId ? .white : .black)
                                     
                                     Spacer()
                                     
-                                    if viewModel.selectedPeer?.peerId == peer.peerId {
+                                    if createRoomViewModel.selectedPeer?.peerId == peer.peerId {
                                         Image(systemName: "checkmark")
                                             .foregroundColor(.white)
                                             .padding(.trailing, 10)
                                     }
                                 }
                                 .frame(maxWidth: UIScreen.main.bounds.width * 0.8) // Set width to 80% of the screen
-                                .background(viewModel.selectedPeer?.peerId == peer.peerId ? Color.blue : Color.white)
+                                .background(createRoomViewModel.selectedPeer?.peerId == peer.peerId ? Color.blue : Color.white)
                                 .cornerRadius(15)
                                 .shadow(color: .gray.opacity(0.3), radius: 5, x: 0, y: 5)
                                 .padding(.horizontal, 10) // Adjust padding to center the buttons
@@ -45,21 +45,21 @@ struct CreateRoomView: View {
                     }
                 }
                 Button(action:{
-                    viewModel.join()
-                    viewModel.send(message: .init(type: .start, message: ""))
+                    createRoomViewModel.join()
+                    createRoomViewModel.send(message: .init(type: .start, message: ""))
                     isNavigationActive = true
                 }) {
                     Text("たたかう")
                         .font(Font.custom("Mimi_font-Regular", size: 24))
                         .padding()
                         .frame(width: 250, height: 65)
-                        .background(viewModel.sessionState != .connected ? Color.gray : Color.black)
-                        .foregroundColor(viewModel.sessionState != .connected ? Color.black : Color.white)
+                        .background(createRoomViewModel.sessionState != .connected ? Color.gray : Color.black)
+                        .foregroundColor(createRoomViewModel.sessionState != .connected ? Color.black : Color.white)
                         .cornerRadius(.infinity)
                 }
-                .disabled(viewModel.sessionState != .connected)
+                .disabled(createRoomViewModel.sessionState != .connected)
                 .padding(5)
-                NavigationLink(destination: AttackView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult), isActive: $isNavigationActive) {
+                NavigationLink(destination: AttackView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult, createRoomViewModel: createRoomViewModel), isActive: $isNavigationActive) {
                     EmptyView()
                 }
             }

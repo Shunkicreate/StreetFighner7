@@ -187,7 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				B7DF60FE2C8CE113000D428F /* CreateRoomViewModel.swift */,
-        E40823D72C8CE125001A4BA9 /* JoinRoomViewModel.swift */,
+				E40823D72C8CE125001A4BA9 /* JoinRoomViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -423,7 +423,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StreetFighner7/Preview Content\"";
-				DEVELOPMENT_TEAM = 6362YQU9LF;
+				DEVELOPMENT_TEAM = 69BMRJXU5B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StreetFighner7/Info.plist;
@@ -437,7 +437,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.StreetFighner70;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.StreetFighner700;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -454,7 +454,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"StreetFighner7/Preview Content\"";
-				DEVELOPMENT_TEAM = 6362YQU9LF;
+				DEVELOPMENT_TEAM = 69BMRJXU5B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StreetFighner7/Info.plist;
@@ -468,7 +468,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.StreetFighner70;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.StreetFighner700;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
