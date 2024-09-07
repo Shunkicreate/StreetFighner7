@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0FAD42062C8C453B00C76A9C /* NekonoteState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAD42052C8C453B00C76A9C /* NekonoteState.swift */; };
+		9EEFCA352C8C49FD00CDE604 /* Mimi_font-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */; };
 		AB466FC22C8C2DDA00CA5B06 /* StreetFighner7App.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FC12C8C2DDA00CA5B06 /* StreetFighner7App.swift */; };
 		AB466FC42C8C2DDA00CA5B06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FC32C8C2DDA00CA5B06 /* ContentView.swift */; };
 		AB466FC62C8C2DDB00CA5B06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB466FC52C8C2DDB00CA5B06 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		0FAD42052C8C453B00C76A9C /* NekonoteState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NekonoteState.swift; sourceTree = "<group>"; };
 		9EEFCA342C8C3DC300CDE604 /* Mimi_font-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mimi_font-Regular.ttf"; sourceTree = "<group>"; };
+		9EEFCA362C8C4A8600CDE604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AB466FBE2C8C2DDA00CA5B06 /* StreetFighner7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StreetFighner7.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB466FC12C8C2DDA00CA5B06 /* StreetFighner7App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreetFighner7App.swift; sourceTree = "<group>"; };
 		AB466FC32C8C2DDA00CA5B06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				0FAD42042C8C452400C76A9C /* Models */,
+				9EEFCA362C8C4A8600CDE604 /* Info.plist */,
 				9EEFCA332C8C3DB900CDE604 /* Fonts */,
 				AB466FFC2C8C3B0500CA5B06 /* Views */,
 				AB466FCF2C8C34DC00CA5B06 /* AppDelegate.swift */,
@@ -177,6 +180,7 @@
 			files = (
 				AB466FC92C8C2DDB00CA5B06 /* Preview Assets.xcassets in Resources */,
 				AB466FC62C8C2DDB00CA5B06 /* Assets.xcassets in Resources */,
+				9EEFCA352C8C49FD00CDE604 /* Mimi_font-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +337,7 @@
 				DEVELOPMENT_TEAM = 8K2Z64AUSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StreetFighner7/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -362,6 +367,7 @@
 				DEVELOPMENT_TEAM = 8K2Z64AUSL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StreetFighner7/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

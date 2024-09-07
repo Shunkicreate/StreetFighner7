@@ -14,14 +14,42 @@ struct TitleView: View {
 
             // 他のUIコンポーネントを配置
             VStack {
-                Text("Title Screen")
-                    .font(.largeTitle)
-                NavigationLink("Create Room", destination: CreateRoomView(path: $path, isFromResult: $isFromResult))
-                NavigationLink("Join Room", destination: JoinRoomView(path: $path, isFromResult: $isFromResult))
+                Text("ねこぱんち")
+                    .font(Font.custom("Mimi_font-Regular", size: 96))
+                
+                Button {
+                    
+                } label: {
+                    Text("へやをつくる")
+                        .font(Font.custom("Mimi_font-Regular", size: 24))
+                        .padding()
+                        .accentColor(Color.white)
+                        .frame(width: 300)
+                        .background(Color.black)
+                        .cornerRadius(.infinity)
+                }
+                .padding(10)
+                
+                Button {
+                   
+                } label: {
+                    Text("へやにはいる")
+                        .font(Font.custom("Mimi_font-Regular", size: 24))
+                        .padding()
+                        .accentColor(Color.white)
+                        .frame(width: 300)
+                        .background(Color.black)
+                        .cornerRadius(.infinity)
+                }
+                .padding(5)
             }
             .padding()
             .navigationBarBackButtonHidden(true)
             
         }
     }
+}
+
+#Preview {
+    TitleView()
 }

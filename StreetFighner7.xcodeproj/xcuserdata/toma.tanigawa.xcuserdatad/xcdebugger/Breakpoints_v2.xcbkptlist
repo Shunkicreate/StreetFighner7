@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "EEF72093-CE63-44F2-84FF-D39599225222"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "14DBCDE1-9188-4E80-BF7E-9B023AB31524"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StreetFighner7/Views/TitleView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5"
+            endingLineNumber = "5"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "14DBCDE1-9188-4E80-BF7E-9B023AB31524 - e2248230dbef393a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StreetFighner7.TitleView.body.getter : some"
+                  moduleName = "StreetFighner7"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toma.tanigawa/Documents/workdir/spajam/StreetFighner7/StreetFighner7/Views/TitleView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5">
+               </Location>
+               <Location
+                  uuid = "14DBCDE1-9188-4E80-BF7E-9B023AB31524 - 6d43dad3646cc12"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.NavigationLink&lt;SwiftUI.Text, StreetFighner7.CreateRoomView&gt;, SwiftUI.NavigationLink&lt;SwiftUI.Text, StreetFighner7.JoinRoomView&gt;)&gt; in StreetFighner7.TitleView.body.getter : some"
+                  moduleName = "StreetFighner7"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/toma.tanigawa/Documents/workdir/spajam/StreetFighner7/StreetFighner7/Views/TitleView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "6"
+                  endingLineNumber = "6">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
