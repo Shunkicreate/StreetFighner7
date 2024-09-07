@@ -21,7 +21,7 @@ struct DefenseView: View {
                 Image(.nekonoteReverse)
                     .resizable()
                     .scaledToFit()
-                    .scaleEffect(1.05)
+                    .scaleEffect(gameModel.isAttacked ? 1.05 : 0.4, anchor: .top)
                     .offset(
                         x: {
                             switch gameModel.state {
@@ -76,7 +76,7 @@ struct DefenseView: View {
         .onDisappear {
             motionManager.stopAccelerometer()
         }
-        .onChange(of: motionManager.accelerometerData) { _ in
+        .onChange(of: motionManager.accelerometerData) {
             updateGameModelState()
         }
     }
