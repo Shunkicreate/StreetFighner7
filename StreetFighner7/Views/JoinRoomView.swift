@@ -79,7 +79,7 @@ struct JoinRoomView: View {
             dismiss()
         } label: {
             Text("もどる")
-                .font(Font.custom("Mimi_font-Regular", size: 24))
+                .font(Font.custom("Mimi_font-Regular", size: 30))
                 .foregroundStyle(.black)
         }
     }
