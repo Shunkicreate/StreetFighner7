@@ -11,6 +11,7 @@
 		AB466FC42C8C2DDA00CA5B06 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FC32C8C2DDA00CA5B06 /* ContentView.swift */; };
 		AB466FC62C8C2DDB00CA5B06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB466FC52C8C2DDB00CA5B06 /* Assets.xcassets */; };
 		AB466FC92C8C2DDB00CA5B06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB466FC82C8C2DDB00CA5B06 /* Preview Assets.xcassets */; };
+		AB466FD02C8C34DC00CA5B06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FCF2C8C34DC00CA5B06 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		AB466FC32C8C2DDA00CA5B06 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AB466FC52C8C2DDB00CA5B06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB466FC82C8C2DDB00CA5B06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AB466FCF2C8C34DC00CA5B06 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		AB466FC02C8C2DDA00CA5B06 /* StreetFighner7 */ = {
 			isa = PBXGroup;
 			children = (
+				AB466FCF2C8C34DC00CA5B06 /* AppDelegate.swift */,
 				AB466FC12C8C2DDA00CA5B06 /* StreetFighner7App.swift */,
 				AB466FC32C8C2DDA00CA5B06 /* ContentView.swift */,
 				AB466FC52C8C2DDB00CA5B06 /* Assets.xcassets */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB466FD02C8C34DC00CA5B06 /* AppDelegate.swift in Sources */,
 				AB466FC42C8C2DDA00CA5B06 /* ContentView.swift in Sources */,
 				AB466FC22C8C2DDA00CA5B06 /* StreetFighner7App.swift in Sources */,
 			);

@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  StreetFighner7
-//
-//  Created by Shunki Tada on 2024/09/07.
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -21,4 +14,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .previewInterfaceOrientation(.landscapeLeft)  // 横向きに設定
 }
