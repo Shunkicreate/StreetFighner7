@@ -28,6 +28,7 @@
 		AB4670002C8C3B0500CA5B06 /* JoinRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FF92C8C3B0500CA5B06 /* JoinRoomView.swift */; };
 		AB4670012C8C3B0500CA5B06 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FFA2C8C3B0500CA5B06 /* ResultView.swift */; };
 		AB4670022C8C3B0500CA5B06 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB466FFB2C8C3B0500CA5B06 /* TitleView.swift */; };
+		AB46700C2C8C889700CA5B06 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB46700B2C8C889700CA5B06 /* MotionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		AB466FF92C8C3B0500CA5B06 /* JoinRoomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinRoomView.swift; sourceTree = "<group>"; };
 		AB466FFA2C8C3B0500CA5B06 /* ResultView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		AB466FFB2C8C3B0500CA5B06 /* TitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		AB46700B2C8C889700CA5B06 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				0F1C5D092C8C8718001B78CE /* Resources */,
+				AB4670082C8C885E00CA5B06 /* Managers */,
 				0FAD42042C8C452400C76A9C /* Models */,
 				9EEFCA362C8C4A8600CDE604 /* Info.plist */,
 				9EEFCA332C8C3DB900CDE604 /* Fonts */,
@@ -150,6 +153,14 @@
 				AB466FFB2C8C3B0500CA5B06 /* TitleView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AB4670082C8C885E00CA5B06 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				AB46700B2C8C889700CA5B06 /* MotionManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +246,7 @@
 				0F1C5D0D2C8C8B2A001B78CE /* SoundManager.swift in Sources */,
 				AB4670002C8C3B0500CA5B06 /* JoinRoomView.swift in Sources */,
 				AB4670012C8C3B0500CA5B06 /* ResultView.swift in Sources */,
+				AB46700C2C8C889700CA5B06 /* MotionManager.swift in Sources */,
 				AB466FC42C8C2DDA00CA5B06 /* ContentView.swift in Sources */,
 				AB466FFE2C8C3B0500CA5B06 /* CreateRoomView.swift in Sources */,
 				AB466FFD2C8C3B0500CA5B06 /* AttackView.swift in Sources */,
