@@ -15,30 +15,25 @@ struct AttackView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                if catHandModel.direction == .left {
-                    Image("nekonote_reverse")
-                        .resizable()
-                        .scaledToFit()
-                        .position(x: geometry.size.width * 0.2, y: geometry.size.height * 0.4)
-                } else if catHandModel.direction == .center {
-                    Image("nekonote_reverse")
-                        .resizable()
-                        .scaledToFit()
-                        .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.4)
-                } else if catHandModel.direction == .right {
-                    Image("nekonote_reverse")
-                        .resizable()
-                        .scaledToFit()
-                        .position(x: geometry.size.width * 0.8, y: geometry.size.height * 0.4)
+                Group {
+                    if catHandModel.direction == .left {
+                        Image("nekonote_reverse")
+                            .resizable()
+                            .scaledToFit()
+                            .position(x: geometry.size.width * 0.2, y: geometry.size.height * 0.4)
+                    } else if catHandModel.direction == .center {
+                        Image("nekonote_reverse")
+                            .resizable()
+                            .scaledToFit()
+                            .position(x: geometry.size.width * 0.5, y: geometry.size.height * 0.4)
+                    } else if catHandModel.direction == .right {
+                        Image("nekonote_reverse")
+                            .resizable()
+                            .scaledToFit()
+                            .position(x: geometry.size.width * 0.8, y: geometry.size.height * 0.4)
+                    }
                 }
-                // アタック時のオーバーレイ
-                ZStack {
-                    Image("concentration_line")
-                        .resizable()
-                        .scaledToFill()
-                        .opacity(0.5) // 半透明にして重ね合わせる
-                        .ignoresSafeArea()
-                }
+                .rotationEffect(.init(degrees: 180))
                 
                 NavigationLink(destination: ResultView(
                     rotateScreenModel: rotateScreenModel,
@@ -49,6 +44,8 @@ struct AttackView: View {
                     EmptyView()
                 }
             }
+            .navigationBarBackButtonHidden(true)
+            .background(Color.green.opacity(0.3))
         }
         .onAppear {
             rotateScreenModel.rotateScreen(orientation: .portrait)
