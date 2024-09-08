@@ -75,11 +75,17 @@ struct AttackView: View {
             if catHandModel.isAttack {
                 switch catHandModel.direction {
                 case .center:
-                    createRoomViewModel.send(message: .init(type: .attackCenter, message: ""))
+                    DispatchQueue.main.async {
+                        createRoomViewModel.send(message: .init(type: .attackCenter, message: ""))
+                    }
                 case .left:
-                    createRoomViewModel.send(message: .init(type: .attackLeft, message: ""))
+                    DispatchQueue.main.async {
+                        createRoomViewModel.send(message: .init(type: .attackLeft, message: ""))
+                    }
                 case .right:
-                    createRoomViewModel.send(message: .init(type: .attackRight, message: ""))
+                    DispatchQueue.main.async {
+                        createRoomViewModel.send(message: .init(type: .attackRight, message: ""))
+                    }
                 }
             }
         }
