@@ -1,5 +1,29 @@
 import SwiftUI
 
+// 太り具合に応じた文言のenum
+enum NekoStatus: String {
+    case daifugo = "だいふごう"
+    case fugoNeko = "ふごうねこ"
+    case normalNeko = "ふつうのねこ"
+    case moreTuna = "ツナ缶もっとくれ"
+    case helpMe = "助けてにゃ"
+    
+    static func status(for fatLevel: Int) -> NekoStatus {
+        switch fatLevel {
+        case 5:
+            return .daifugo
+        case 4:
+            return .fugoNeko
+        case 3:
+            return .normalNeko
+        case 2:
+            return .moreTuna
+        default:
+            return .helpMe
+        }
+    }
+}
+
 struct ResultView: View {
     @ObservedObject var rotateScreenModel: RotateScreenModel
     @Binding var path: NavigationPath
@@ -16,12 +40,12 @@ struct ResultView: View {
         let nonlimit_neko_fat_level = Int(ceil(Double(resultScore.totalSuccess) / (Double(neko_fat_standard_score) / Double(neko_fat_standard_level))))
         let neko_fat_level = max(1, min(nonlimit_neko_fat_level, Int(neko_fat_standard_level)))
         
-        var neko_fat_image: String {
-            return "neko_ilust_fat_" + String(neko_fat_level)
-        }
+        let neko_fat_image = "neko_ilust_fat_" + String(neko_fat_level)
+        let neko_status = NekoStatus.status(for: neko_fat_level).rawValue
+        
         GeometryReader { geometry in
-            VStack {
-                Text("リザルト")
+                    VStack {
+                Text("けっか: \(neko_status)")
                     .font(Font.custom("Mimi_font-Regular", size: 40))
                     .padding()
                 
@@ -94,7 +118,9 @@ struct StateWrapperForPreview: View {
     @State private var path = NavigationPath()
     @State private var isFromResult = false
     @StateObject private var resultScore = ResultScore() // ResultScoreを追加
-
+    @State private var isResultViewNavigationActive = false
+    @State private var resultScore = ResultScore()
+    
     var body: some View {
         ResultView(rotateScreenModel: .init(), path: $path, isFromResult: $isFromResult, resultScore: resultScore)
     }
