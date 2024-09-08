@@ -117,8 +117,7 @@ struct ResultView: View {
 struct StateWrapperForPreview: View {
     @State private var path = NavigationPath()
     @State private var isFromResult = false
-    @State private var isResultViewNavigationActive = false
-    @State private var resultScore = ResultScore()
+    @StateObject private var resultScore = ResultScore() // ResultScoreを追加
     
     var body: some View {
         ResultView(rotateScreenModel: .init(), path: $path, isFromResult: $isFromResult, resultScore: resultScore)
