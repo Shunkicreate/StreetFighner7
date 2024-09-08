@@ -18,7 +18,7 @@ struct DefenseView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .bottom) {
-                Image(.churuFukuro)
+                Image(.tunaCan)
                     .resizable()
                     .scaledToFit()
                     .frame(height: 70)
