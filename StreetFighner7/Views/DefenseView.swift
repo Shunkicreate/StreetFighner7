@@ -11,7 +11,7 @@ struct DefenseView: View {
     @State private var churuModel = ChuruModel(position: .center)
     @State private var audioPlayer: AVAudioPlayer?
     @State private var countdown: Int = 15
-    @State private var showResultButton = false
+    @State private var isResultViewNavigationActive = false
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
     
@@ -42,6 +42,15 @@ struct DefenseView: View {
                         }(),
                         y: gameModel.isAttacked ? 0 : -geometry.size.height * 1.05
                     )
+                
+                NavigationLink(destination: ResultView(
+                    rotateScreenModel: rotateScreenModel,
+                    path: $path,
+                    isFromResult: $isFromResult,
+                    resultScore: resultScore
+                ), isActive: $isResultViewNavigationActive) {
+                    EmptyView()
+                }
             }
             .navigationBarBackButtonHidden(true)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -57,25 +66,6 @@ struct DefenseView: View {
                     .foregroundColor(.white)
                     .padding()
             }
-            if showResultButton {
-                VStack {
-                    NavigationLink(destination: ResultView(
-                        rotateScreenModel: rotateScreenModel,
-                        path: $path,
-                        isFromResult: $isFromResult,
-                        resultScore: resultScore
-                    )) {
-                        Text("結果画面へいく")
-                            .font(Font.custom("Mimi_font-Regular", size: 24))
-                            .padding()
-                            .accentColor(Color.white)
-                            .frame(width: 250, height: 65)
-                            .background(Color.black)
-                            .cornerRadius(.infinity)
-                    }
-                }
-                .transition(.opacity) // フェードインのようなアニメーションを追加可能
-            }
         }
         .onAppear {
             motionManager.startAccelerometer(interval: 0.1)
@@ -85,9 +75,7 @@ struct DefenseView: View {
                 gameCountdownModel.observeCountdown(timeLimit: 15) { remainingTime in
                     countdown = remainingTime
                 } completion: {
-                    withAnimation {
-                        showResultButton = true
-                    }
+                    isResultViewNavigationActive = true
                 }
             }
         }
