@@ -9,12 +9,12 @@ struct CreateRoomView: View {
     /// 対戦画面への遷移フラグ
     @State private var isNavigationActive = false
     
+    @State private var isShowWarningAlert = false
+    
     let columns = [
         GridItem(.flexible(), spacing: 15), // Flexible column
         GridItem(.flexible(), spacing: 15)  // Flexible column
     ]
-        
-    
     var body: some View {
         GeometryReader { geometry in
             NavigationView {
@@ -53,7 +53,8 @@ struct CreateRoomView: View {
                             }
                         }
                         //                    .padding(.horizontal, 10) // グリッド全体の左右の余白を調整
-                    }.frame(height: geometry.size.height * 0.4)
+                    }
+                    .frame(height: geometry.size.height * 0.5)
                     
                     Button(action:{
                         createRoomViewModel.join()
@@ -64,17 +65,18 @@ struct CreateRoomView: View {
                             .font(Font.custom("Mimi_font-Regular", size: 24))
                             .padding()
                             .frame(width: 250, height: 65)
-                            .background(createRoomViewModel.sessionState != .connected ? Color.gray : Color.black)
-                            .foregroundColor(createRoomViewModel.sessionState != .connected ? Color.black : Color.white)
+                            .background(createRoomViewModel.sessionState != .connected || isShowWarningAlert ? Color.gray : Color.black)
+                            .foregroundColor(createRoomViewModel.sessionState != .connected || isShowWarningAlert ? Color.black : Color.white)
                             .cornerRadius(.infinity)
                     }
-                    .disabled(createRoomViewModel.sessionState != .connected)
+                    .disabled(createRoomViewModel.sessionState != .connected || isShowWarningAlert)
                     .padding(5)
                     NavigationLink(destination: AttackView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult, createRoomViewModel: createRoomViewModel), isActive: $isNavigationActive) {
                         EmptyView()
                     }
                 }
                 .padding()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background {
                     Image("background")
                         .resizable()
@@ -84,6 +86,20 @@ struct CreateRoomView: View {
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: backButton)
+        }
+        .onAppear {
+            rotateScreenModel.rotateScreen(orientation: .portrait)
+        }
+        .onChange(of: createRoomViewModel.sessionState) {
+            if createRoomViewModel.sessionState == .connected {
+                isShowWarningAlert = true
+            }
+        }
+        .alert("スマホを縦に持ってください", isPresented: $isShowWarningAlert) {
+            Button {
+            } label: {
+                Text("わかりました")
+            }
         }
     }
     var backButton: some View {

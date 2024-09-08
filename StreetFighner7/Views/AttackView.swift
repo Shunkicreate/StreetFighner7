@@ -48,7 +48,6 @@ struct AttackView: View {
             .background(Color.green.opacity(0.3))
         }
         .onAppear {
-            rotateScreenModel.rotateScreen(orientation: .portrait)
             motionManager.startAccelerometer(interval: 0.1)
             motionManager.startDeviceMotion(interval: 0.1)
             // 1秒遅れてカウントダウンを開始（画面切り替わる時間を考慮）
