@@ -117,7 +117,6 @@ struct ResultView: View {
 struct StateWrapperForPreview: View {
     @State private var path = NavigationPath()
     @State private var isFromResult = false
-    @StateObject private var resultScore = ResultScore() // ResultScoreを追加
     @State private var isResultViewNavigationActive = false
     @State private var resultScore = ResultScore()
     
