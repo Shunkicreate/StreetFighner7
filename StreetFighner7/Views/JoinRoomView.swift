@@ -52,6 +52,7 @@ struct JoinRoomView: View {
                 Spacer()
             }
             .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background {
                 Image("background")
                     .resizable()
