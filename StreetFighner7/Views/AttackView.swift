@@ -20,7 +20,7 @@ struct AttackView: View {
                         Image("nekonote_reverse")
                             .resizable()
                             .scaledToFit()
-                            .position(x: geometry.size.width * 0.2, y: geometry.size.height * 0.4)
+                            .position(x: geometry.size.width * 0.8, y: geometry.size.height * 0.4)
                     } else if catHandModel.direction == .center {
                         Image("nekonote_reverse")
                             .resizable()
@@ -30,7 +30,7 @@ struct AttackView: View {
                         Image("nekonote_reverse")
                             .resizable()
                             .scaledToFit()
-                            .position(x: geometry.size.width * 0.8, y: geometry.size.height * 0.4)
+                            .position(x: geometry.size.width * 0.2, y: geometry.size.height * 0.4)
                     }
                 }
                 .rotationEffect(.init(degrees: 180))
