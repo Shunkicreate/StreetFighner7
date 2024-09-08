@@ -79,12 +79,25 @@ struct DefenseView: View {
         }
         .onAppear {
             motionManager.startAccelerometer(interval: 0.1)
-
+            
             // 1秒遅れてカウントダウンを開始
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 gameCountdownModel.observeCountdown(timeLimit: 15) { remainingTime in
                     countdown = remainingTime
                 } completion: {
+                    let resultScoreValue = ResultScoreValue(
+                        successLeft: resultScore.successLeft,
+                        successCenter: resultScore.successCenter,
+                        successRight: resultScore.successRight,
+                        failureLeft: resultScore.failureLeft,
+                        failureCenter: resultScore.failureCenter,
+                        failureRight: resultScore.failureRight,
+                        totalAvoid: resultScore.totalAvoid
+                    )
+                    let jsonMessage = resultScoreValue.toJson()
+                    if jsonMessage != nil {
+                        joinRoomViewModel.send(message: Message.init(type: .result, message: jsonMessage!))
+                    }
                     isResultViewNavigationActive = true
                 }
             }
@@ -106,7 +119,7 @@ struct DefenseView: View {
                 handleAttack()
                 gameModel.state = .right
             } else {
-                fatalError("未実装")
+//                fatalError("未実装")
             }
         }
     }
@@ -123,7 +136,7 @@ struct DefenseView: View {
             churuModel.updatePosition(x: 0.0)
         }
     }
-
+    
     // アタックされたときの処理
     private func handleAttack() {
         withAnimation(.easeInOut(duration: 0.3), completionCriteria: .logicallyComplete) {
@@ -150,7 +163,7 @@ struct DefenseView: View {
         let randomIndex = Int.random(in: 0..<soundNameList.count)
         let soundName = soundNameList[randomIndex]
         SoundManager.shared.playSound(soundName)
-
+        
         // バイブレーションも鳴らす
         VibrationManager.shared.triggerNotificationFeedback(type: .success)
         // 回数の保存
@@ -162,7 +175,7 @@ struct DefenseView: View {
     @State var path = NavigationPath()
     @State var isFromResult = false
     return DefenseView(
-        rotateScreenModel: .init(), 
+        rotateScreenModel: .init(),
         joinRoomViewModel: .init(),
         path: $path,
         isFromResult: $isFromResult

@@ -85,6 +85,18 @@ struct AttackView: View {
                     }
                 }
             }
+        }.onChange(of: createRoomViewModel.messages) {
+            if createRoomViewModel.messages.last?.type == .result {
+                var message = createRoomViewModel.messages.last?.message
+                if message == nil {
+                    return
+                }
+                var resultScoreValue = ResultScoreValue.fromJson(jsonString: message!)
+                if resultScoreValue == nil {
+                    return
+                }
+                resultScore.setResultScoreValue(resultScoreValue: resultScoreValue!)
+            }
         }
     }
     

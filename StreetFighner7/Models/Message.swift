@@ -13,6 +13,7 @@ enum MessageType: Int, Codable {
     case attackCenter = 2
     case attackLeft = 3
     case attackRight = 4
+    case result = 5
 }
 
 class Message: Codable, Identifiable, Hashable {
