@@ -41,11 +41,11 @@ struct DefenseView: View {
                         x: {
                             switch gameModel.state {
                             case .left:
-                                geometry.size.width / -3
+                                geometry.size.width / 3
                             case .center:
                                 0
                             case .right:
-                                geometry.size.width / 3
+                                geometry.size.width / -3
                             case .paused, .gameOver:
                                 0
                             }
@@ -146,10 +146,19 @@ struct DefenseView: View {
                 gameModel.isAttacked = false
             }
         }
-        if (gameModel.state.toString() == churuModel.position.rawValue){
+        
+        switch (gameModel.state.toString(), churuModel.position.rawValue) {
+        case ("left", "left"):
+            resultScore.recordFailure(at: churuModel.position)
+        case ("right", "right"):
+            resultScore.recordFailure(at: churuModel.position)
+        case ("left", "right"):
             actionAttack()
-        } else {
-            // 当たっていない時
+        case ("right", "left"):
+            actionAttack()
+        case ("center", "center"):
+            actionAttack()
+        case (_, _):
             resultScore.recordFailure(at: churuModel.position)
         }
     }
