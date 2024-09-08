@@ -33,7 +33,7 @@ struct ResultView: View {
                             .frame(height: geometry.size.height * 0.5)
                         
                         // タイトル画面に戻るボタン
-                        NavigationLink("トップへ戻る", destination: TitleView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
+                        NavigationLink("トップへもどる", destination: TitleView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult))
                             .onTapGesture {
                                 isFromResult = true // 遷移元がResultであることを設定
                                 resultScore.resetScores() // スコアをリセット
@@ -54,7 +54,7 @@ struct ResultView: View {
                         Text("\(resultScore.totalSuccess+resultScore.totalFailure)回")
                             .padding(.bottom, 5)
                         
-                        Text("取得したチュール")
+                        Text("取得したツナかん")
                         Text("\(resultScore.totalSuccess)個")
                         
                         Text("成功率")

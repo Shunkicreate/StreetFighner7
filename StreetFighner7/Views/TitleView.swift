@@ -22,7 +22,7 @@ struct TitleView: View {
             .padding(10)
             
             NavigationLink(destination: JoinRoomView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult)) {
-                Text("ツナ缶をまもる")
+                Text("ツナかんをまもる")
                     .font(Font.custom("Mimi_font-Regular", size: 24))
                     .padding()
                     .accentColor(Color.white)
