@@ -9,72 +9,83 @@ struct CreateRoomView: View {
     /// 対戦画面への遷移フラグ
     @State private var isNavigationActive = false
     
+    let columns = [
+        GridItem(.flexible(), spacing: 15), // Flexible column
+        GridItem(.flexible(), spacing: 15)  // Flexible column
+    ]
+        
+    
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("ねこぱんち")
-                    .font(Font.custom("Mimi_font-Regular", size: 96))
-                ScrollView {
-                    VStack(spacing: 15) {
-                        ForEach(createRoomViewModel.peers) { peer in
-                            Button(action: {
-                                createRoomViewModel.invite(_selectedPeer: peer)
-                            }) {
-                                HStack {
-                                    Text(peer.peerId.displayName)
-                                        .font(Font.custom("Mimi_font-Regular", size: 18)) // Reduce the font size
-                                        .padding(.vertical, 10) // Adjust vertical padding to make buttons smaller
-                                        .padding(.horizontal, 15) // Adjust horizontal padding
-                                        .foregroundColor(createRoomViewModel.selectedPeer?.peerId == peer.peerId ? .white : .black)
-                                    
-                                    Spacer()
-                                    
-                                    if createRoomViewModel.selectedPeer?.peerId == peer.peerId {
-                                        Image(systemName: "checkmark")
-                                            .foregroundColor(.white)
-                                            .padding(.trailing, 10)
+        GeometryReader { geometry in
+            NavigationView {
+                VStack {
+                    Text("ねこぱんち")
+                        .font(Font.custom("Mimi_font-Regular", size: 96))
+                    ScrollView {
+                        LazyVGrid(columns: columns, spacing: 7) {
+                            ForEach(createRoomViewModel.peers) { peer in
+                                Button(action: {
+                                    createRoomViewModel.invite(_selectedPeer: peer)
+                                }) {
+                                    VStack {
+                                        HStack {
+                                            Text(peer.peerId.displayName)
+                                                .font(Font.custom("Mimi_font-Regular", size: 18)) // フォントサイズを小さくする
+                                                .padding(.vertical, 10) // ボタンを小さくするために垂直方向の余白を調整
+                                                .padding(.horizontal, 15) // 水平方向の余白を調整
+                                                .foregroundColor(createRoomViewModel.selectedPeer?.peerId == peer.peerId ? .white : .black)
+                                            
+                                            Spacer()
+                                            
+                                            if createRoomViewModel.selectedPeer?.peerId == peer.peerId {
+                                                Image(systemName: "checkmark")
+                                                    .foregroundColor(.white)
+                                                    .padding(.trailing, 10)
+                                            }
+                                        }
                                     }
+                                    .frame(maxWidth: .infinity) // 幅を無限に設定し、グリッドの各列に合わせる
+                                    .background(createRoomViewModel.selectedPeer?.peerId == peer.peerId ? Color.blue : Color.white)
+                                    .cornerRadius(15)
+                                    .shadow(color: .gray.opacity(0.3), radius: 5, x: 0, y: 5)
+                                    .padding(.horizontal, 10) // ボタンを中央に配置するために余白を調整
                                 }
-                                .frame(maxWidth: UIScreen.main.bounds.width * 0.8) // Set width to 80% of the screen
-                                .background(createRoomViewModel.selectedPeer?.peerId == peer.peerId ? Color.blue : Color.white)
-                                .cornerRadius(15)
-                                .shadow(color: .gray.opacity(0.3), radius: 5, x: 0, y: 5)
-                                .padding(.horizontal, 10) // Adjust padding to center the buttons
                             }
                         }
+                        //                    .padding(.horizontal, 10) // グリッド全体の左右の余白を調整
+                    }.frame(height: geometry.size.height * 0.4)
+                    
+                    Button(action:{
+                        createRoomViewModel.join()
+                        createRoomViewModel.send(message: .init(type: .start, message: ""))
+                        isNavigationActive = true
+                    }) {
+                        Text("たたかう")
+                            .font(Font.custom("Mimi_font-Regular", size: 24))
+                            .padding()
+                            .frame(width: 250, height: 65)
+                            .background(createRoomViewModel.sessionState != .connected ? Color.gray : Color.black)
+                            .foregroundColor(createRoomViewModel.sessionState != .connected ? Color.black : Color.white)
+                            .cornerRadius(.infinity)
+                    }
+                    .disabled(createRoomViewModel.sessionState != .connected)
+                    .padding(5)
+                    NavigationLink(destination: AttackView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult, createRoomViewModel: createRoomViewModel), isActive: $isNavigationActive) {
+                        EmptyView()
                     }
                 }
-                Button(action:{
-                    createRoomViewModel.join()
-                    createRoomViewModel.send(message: .init(type: .start, message: ""))
-                    isNavigationActive = true
-                }) {
-                    Text("たたかう")
-                        .font(Font.custom("Mimi_font-Regular", size: 24))
-                        .padding()
-                        .frame(width: 250, height: 65)
-                        .background(createRoomViewModel.sessionState != .connected ? Color.gray : Color.black)
-                        .foregroundColor(createRoomViewModel.sessionState != .connected ? Color.black : Color.white)
-                        .cornerRadius(.infinity)
-                }
-                .disabled(createRoomViewModel.sessionState != .connected)
-                .padding(5)
-                NavigationLink(destination: AttackView(rotateScreenModel: rotateScreenModel, path: $path, isFromResult: $isFromResult, createRoomViewModel: createRoomViewModel), isActive: $isNavigationActive) {
-                    EmptyView()
+                .padding()
+                .background {
+                    Image("background")
+                        .resizable()
+                        .scaledToFill()
+                        .ignoresSafeArea()
                 }
             }
-            .padding()
-            .background {
-                Image("background")
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-            }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: backButton)
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: backButton)
     }
-    
     var backButton: some View {
         Button {
             dismiss()
@@ -84,6 +95,7 @@ struct CreateRoomView: View {
                 .foregroundStyle(.black)
         }
     }
+    
 }
 
 #Preview {

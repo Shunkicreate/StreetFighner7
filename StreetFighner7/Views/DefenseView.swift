@@ -11,7 +11,7 @@ struct DefenseView: View {
     @State private var churuModel = ChuruModel(position: .center)
     @State private var audioPlayer: AVAudioPlayer?
     @State private var countdown: Int = 15
-    @State private var showResultButton = false
+    @State private var isResultViewNavigationActive = false
     @Binding var path: NavigationPath
     @Binding var isFromResult: Bool
     
@@ -22,7 +22,17 @@ struct DefenseView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 70)
-                
+                    .offset(x: {
+                        guard let y = motionManager.accelerometerData?.acceleration.y else { return 0 }
+                        if y > 0.5 {
+                            return geometry.size.width / 3
+                         } else if y < -0.5 {
+                             return geometry.size.width / -3
+                         } else {
+                             return 0
+                         }
+                    }())
+
                 Image(.nekonoteReverse)
                     .resizable()
                     .scaledToFit()
@@ -42,6 +52,15 @@ struct DefenseView: View {
                         }(),
                         y: gameModel.isAttacked ? 0 : -geometry.size.height * 1.05
                     )
+                
+                NavigationLink(destination: ResultView(
+                    rotateScreenModel: rotateScreenModel,
+                    path: $path,
+                    isFromResult: $isFromResult,
+                    resultScore: resultScore
+                ), isActive: $isResultViewNavigationActive) {
+                    EmptyView()
+                }
             }
             .navigationBarBackButtonHidden(true)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -57,25 +76,6 @@ struct DefenseView: View {
                     .foregroundColor(.white)
                     .padding()
             }
-            if showResultButton {
-                VStack {
-                    NavigationLink(destination: ResultView(
-                        rotateScreenModel: rotateScreenModel,
-                        path: $path,
-                        isFromResult: $isFromResult,
-                        resultScore: resultScore
-                    )) {
-                        Text("結果画面へいく")
-                            .font(Font.custom("Mimi_font-Regular", size: 24))
-                            .padding()
-                            .accentColor(Color.white)
-                            .frame(width: 250, height: 65)
-                            .background(Color.black)
-                            .cornerRadius(.infinity)
-                    }
-                }
-                .transition(.opacity) // フェードインのようなアニメーションを追加可能
-            }
         }
         .onAppear {
             motionManager.startAccelerometer(interval: 0.1)
@@ -85,22 +85,20 @@ struct DefenseView: View {
                 gameCountdownModel.observeCountdown(timeLimit: 15) { remainingTime in
                     countdown = remainingTime
                 } completion: {
-                    withAnimation {
-                        showResultButton = true
-                        var resultScoreValue: ResultScoreValue = ResultScoreValue(
-                            successLeft: resultScore.successLeft,
-                            successCenter: resultScore.successCenter,
-                            successRight: resultScore.successRight,
-                            failureLeft: resultScore.failureLeft,
-                            failureCenter: resultScore.failureCenter,
-                            failureRight: resultScore.failureRight,
-                            totalAvoid: resultScore.totalAvoid
-                        )
-                        var jsonMessage: String? = resultScoreValue.toJson()
-                        if jsonMessage != nil {
-                            joinRoomViewModel.send(message: Message.init(type: .result, message: jsonMessage!))
-                        }
+                    let resultScoreValue = ResultScoreValue(
+                        successLeft: resultScore.successLeft,
+                        successCenter: resultScore.successCenter,
+                        successRight: resultScore.successRight,
+                        failureLeft: resultScore.failureLeft,
+                        failureCenter: resultScore.failureCenter,
+                        failureRight: resultScore.failureRight,
+                        totalAvoid: resultScore.totalAvoid
+                    )
+                    let jsonMessage = resultScoreValue.toJson()
+                    if jsonMessage != nil {
+                        joinRoomViewModel.send(message: Message.init(type: .result, message: jsonMessage!))
                     }
+                    isResultViewNavigationActive = true
                 }
             }
         }
