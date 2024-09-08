@@ -22,6 +22,16 @@ struct DefenseView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 70)
+                    .offset(x: {
+                        guard let y = motionManager.accelerometerData?.acceleration.y else { return 0 }
+                        if y > 0.5 {
+                            return geometry.size.width / 3
+                         } else if y < -0.5 {
+                             return geometry.size.width / -3
+                         } else {
+                             return 0
+                         }
+                    }())
 
                 Image(.nekonoteReverse)
                     .resizable()
