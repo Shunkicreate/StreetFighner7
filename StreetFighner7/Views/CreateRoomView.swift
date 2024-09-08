@@ -104,6 +104,7 @@ struct CreateRoomView: View {
     }
     var backButton: some View {
         Button {
+            rotateScreenModel.rotateScreen(orientation: .landscape)
             dismiss()
         } label: {
             Text("もどる")
